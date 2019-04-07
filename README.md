@@ -1,5 +1,6 @@
 # recipy
-**recipy is project of web and mobile technology **
+**recipy is project of web and mobile technology**
+
 made from pure php 
 
-**you can see in this link [Recipy Pages](https://webserv.kmitl.ac.th/ite60010465/recipy/)(in progress)**
+**you can see in this link [Recipy Pages](https://webserv.kmitl.ac.th/ite60010465/recipy/)**(in progress)

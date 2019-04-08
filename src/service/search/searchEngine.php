@@ -59,6 +59,7 @@ if ($_POST['searchText'] == '') {
     foreach ($search_val as $item) {
         $sql .= "SELECT * FROM recipe WHERE name = '" . $item . "';";
     }
+
     $x = 0;
     foreach ($search_val as $item) {
         if (category::isValidName($item)) {
@@ -86,7 +87,7 @@ if ($_POST['searchText'] == '') {
         } else {
             $sql .= "SELECT * FROM recipe WHERE ingredient LIKE '%" . $item . "%'";
             foreach ($search_val as $value) {
-                    $sql .= "AND category LIKE '%" . $item . "%'";
+                $sql .= "AND category LIKE '%" . $item . "%'";
             }
             $sql .= ";";
         }
@@ -454,9 +455,7 @@ if ($_POST['searchText'] == '') {
         if ($i == 0) {
             $sql .= "SELECT * FROM recipe WHERE name LIKE '%" . $item . "%'";
         } else {
-            if ($item != '') {
                 $sql .= "AND name LIKE '%" . $item . "%'";
-            }
         }
         $i++;
     }

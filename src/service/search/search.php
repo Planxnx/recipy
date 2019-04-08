@@ -10,7 +10,6 @@ include 'searchEngine.php';
                 <th></th>
                 <th>name</th>
                 <th>category</th>
-                <th>ingredient</th>
 
             </tr>
             </thead>
@@ -24,7 +23,6 @@ include 'searchEngine.php';
                         <a href="recipe.php?recipeId=<?php echo $value['recipeId'] ?>"><?php echo $value['name']; ?></a>
                     </td>
                     <td><?php echo $value['category']; ?></td>
-                    <td><?php echo $value['ingredient']; ?></td>
                 </tr>
                 <?php $i++;
 //                if($i>10)break;
@@ -39,7 +37,6 @@ include 'searchEngine.php';
                 <th></th>
                 <th>name</th>
                 <th>category</th>
-                <th>ingredient</th>
             </tr>
             </thead>
             <tbody>
@@ -51,7 +48,6 @@ include 'searchEngine.php';
                     <td><a href="recipe.php?recipeId=<?php echo $value['recipeId'] ?>"><?php echo $value['name']; ?></a>
                     </td>
                     <td><?php echo $value['category']; ?></td>
-                    <td><?php echo $value['ingredient']; ?></td>
                 </tr>
                 <?php $i++;
 //                if($i>10)break;

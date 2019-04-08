@@ -65,7 +65,6 @@ $query = mysqli_query($objCon, $sql);
                     <th></th>
                     <th>name</th>
                     <th>category</th>
-                    <th>ingredient</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -77,7 +76,6 @@ $query = mysqli_query($objCon, $sql);
                             <a href="recipe.php?recipeId=<?php echo $value['recipeId'] ?>"><?php echo $value['name']; ?></a>
                         </td>
                         <td><?php echo $value['category']; ?></td>
-                        <td><?php echo $value['ingredient']; ?></td>
                     </tr>
                     <?php $i++;
                     if ($i > 8) break;

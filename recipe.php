@@ -62,9 +62,11 @@ $query = mysqli_query($objCon, $sql);
                 <th>Recipe</th>
                 <tr>
                     <th>name</th>
-                    <th>category</th>
+                    <th width="5%">category</th>
                     <th>ingredient</th>
                     <th>how to</th>
+                    <th>create date</th>
+
                 </tr>
                 </thead>
                 <tbody>
@@ -75,6 +77,8 @@ $query = mysqli_query($objCon, $sql);
                         <td><?php echo $result['category']; ?></td>
                         <td><?php echo $result['ingredient']; ?></td>
                         <td><?php echo $result['howTo']; ?></td>
+                        <td><?php echo $result['created']; ?></td>
+
                     </tr>
                     <?php $i++;
                     if ($i > 8) break;

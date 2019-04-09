@@ -3,6 +3,7 @@
 include 'config.php';
 $sql = "SELECT * FROM recipe WHERE recipeId =" . $_GET['recipeId'];
 $query = mysqli_query($objCon, $sql);
+session_start()
 ?>
 <html lang="en">
 <head>
@@ -30,26 +31,43 @@ $query = mysqli_query($objCon, $sql);
 <body>
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
-            <div>
-                <a href="index.php"> <img style="width: 15%" src="src/img/logo.png"></a>
+        <div id="top">
+            <a href="index.php"> <img style="width: 15%" src="src/img/logo.png"></a>
+            <?php
+            if (isset($_SESSION["uid"])) {
+                ?>
                 <div align="right">
+
+                    <?php
+
+                    echo "คุณ " . $_SESSION["name"];
+                    echo " &nbsp&nbsp&nbsp";
+                    ?>
+                    <a href="./src/service/auth/signOutService.php">
+                        <button type="button" class="btn btn-primary" id="btnCreateRecipe">
+                            <span class="glyphicon glyphicon-search">Sign out</span>
+                        </button>
+                    </a>
+                </div> <?php
+            } else {
+                ?>
+                <div align="right">
+                    <a href="./signIn.php">
+                        <button type="button" class="btn btn-primary" id="btnCreateRecipe">
+                            <span class="glyphicon glyphicon-search">Sign in</span>
+                        </button>
+                    </a>
+                </div> <?php
+            }
+            ?>
+            <div align="right">
+                <a href="create_recipe.php">
                     <button type="button" class="btn btn-primary" id="btnCreateRecipe">
                         <span class="glyphicon glyphicon-search"></span>
                         Create new Recipe
                     </button>
-                </div>
+                </a>
             </div>
-            <form class="form-inline" name="searchform" id="searchform">
-                <div class="form-group">
-                    <input type="text" name="searchText" id="searchText" class="form-control" placeholder="search here"
-                           autocomplete="off">
-                </div>
-                <button type="button" class="btn btn-primary" id="btnSearch">
-                    <span class="glyphicon glyphicon-search"></span>
-                    Search
-                </button>
-            </form>
         </div>
     </div>
     <div class="loading" style="margin-top: 1.5%">
@@ -65,7 +83,7 @@ $query = mysqli_query($objCon, $sql);
                     <th width="5%">category</th>
                     <th>ingredient</th>
                     <th>how to</th>
-                    <th>create date</th>
+                    <th>create by</th>
 
                 </tr>
                 </thead>
@@ -77,7 +95,7 @@ $query = mysqli_query($objCon, $sql);
                         <td><?php echo $result['category']; ?></td>
                         <td><?php echo $result['ingredient']; ?></td>
                         <td><?php echo $result['howTo']; ?></td>
-                        <td><?php echo $result['created']; ?></td>
+                        <td><?php echo $result['created_by']; ?></td>
 
                     </tr>
                     <?php $i++;

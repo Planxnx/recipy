@@ -3,6 +3,7 @@
 include 'config.php';
 $sql = "SELECT * FROM recipe ORDER BY RAND() ";
 $query = mysqli_query($objCon, $sql);
+session_start();
 ?>
 <html lang="en">
 <head>
@@ -31,16 +32,44 @@ $query = mysqli_query($objCon, $sql);
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <div>
+            <div id="top">
                 <a href="index.php"> <img style="width: 15%" src="src/img/logo.png"></a>
+                <?php
+                if (isset($_SESSION["uid"])) {
+                    ?>
+                    <div align="right">
+
+                        <?php
+
+                        echo "คุณ " . $_SESSION["name"];
+                        echo " &nbsp&nbsp&nbsp";
+                        ?>
+                        <a href="./src/service/auth/signOutService.php">
+                            <button type="button" class="btn btn-primary" id="btnCreateRecipe">
+                                <span class="glyphicon glyphicon-search">Sign out</span>
+                            </button>
+                        </a>
+                    </div> <?php
+                } else {
+                    ?>
+                    <div align="right">
+                        <a href="./signIn.php">
+                            <button type="button" class="btn btn-primary" id="btnCreateRecipe">
+                                <span class="glyphicon glyphicon-search">Sign in</span>
+                            </button>
+                        </a>
+                    </div> <?php
+                }
+                ?>
                 <div align="right">
-                    <button type="button" class="btn btn-primary" id="btnCreateRecipe">
-                        <span class="glyphicon glyphicon-search"></span>
-                        Create new Recipe
-                    </button>
+                    <a href="create_recipe.php">
+                        <button type="button" class="btn btn-primary" id="btnCreateRecipe">
+                            <span class="glyphicon glyphicon-search"></span>
+                            Create new Recipe
+                        </button>
+                    </a>
                 </div>
             </div>
-
             <form class="form-inline" name="searchform" id="searchform">
                 <div class="form-group">
                     <input type="text" name="searchText" id="searchText" class="form-control" placeholder="search here"
@@ -117,9 +146,6 @@ $query = mysqli_query($objCon, $sql);
             }
         });
     });
-    document.getElementById("btnCreateRecipe").onclick = function () {
-        location.href = "create_recipe.php";
-    };
 </script>
 </body>
 </html>

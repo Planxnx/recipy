@@ -10,6 +10,7 @@ if (!$objResult) {
     echo 101;
 } else {
     $_SESSION["uid"] = $objResult["uid"];
+    $_SESSION["name"] = $objResult["name"];
     session_write_close();
     $URL = "index.php";
     echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";

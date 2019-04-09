@@ -1,4 +1,5 @@
 <?php
+session_start();
 ob_start();
 include("../../../config.php");
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -9,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $howTo = checkInput($_POST["txthowTo"]);
     $recipeImg = checkInput($_POST["recipeImg"]);
 
-    $strSQL = "INSERT INTO recipe(name,description,category,ingredient,howTo,logo) VALUES ('" . $name . "','" . $description . "','" . $category . "','" . $ingredient . "','" . $howTo . "','" . $recipeImg . "')";
+    $strSQL = "INSERT INTO recipe(uid,name,description,category,ingredient,howTo,created_by,logo) VALUES ('" . $_SESSION["uid"] . "','" . $name . "','" . $description . "','" . $category . "','" . $ingredient . "','" . $howTo . "','" . $_SESSION["name"] . "','" . $recipeImg . "')";
     $objQuery = mysqli_query($objCon, $strSQL);
     header("location:../../../recipe.php?recipeId=" . mysqli_insert_id($objCon));
     mysqli_close($objCon);

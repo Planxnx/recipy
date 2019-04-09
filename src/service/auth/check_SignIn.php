@@ -1,13 +1,13 @@
 <?php
 session_start();
 include("../../../config.php");
-$strSQL = "SELECT * FROM member WHERE Username =
+$strSQL = "SELECT * FROM user WHERE username =
 '" . mysqli_real_escape_string($objCon, $_POST['txtUsername']) . "'
-and Password = '" . mysqli_real_escape_string($objCon, $_POST['txtPassword']) . "'";
+and password = '" . mysqli_real_escape_string($objCon, $_POST['txtPassword']) . "'";
 $objQuery = mysqli_query($objCon, $strSQL);
 $objResult = mysqli_fetch_array($objQuery);
 if (!$objResult) {
-    echo "Username and Password Incorrect!";
+    echo "Username or Password Incorrect!";
 } else {
     $_SESSION["UserID"] = $objResult["UserID"];
     $_SESSION["Status"] = $objResult["Status"];

@@ -7,12 +7,11 @@ and password = '" . mysqli_real_escape_string($objCon, $_POST['txtPassword']) . 
 $objQuery = mysqli_query($objCon, $strSQL);
 $objResult = mysqli_fetch_array($objQuery);
 if (!$objResult) {
-    echo "Username or Password Incorrect!";
+    echo 101;
 } else {
-    $_SESSION["UserID"] = $objResult["UserID"];
-    $_SESSION["Status"] = $objResult["Status"];
+    $_SESSION["uid"] = $objResult["uid"];
     session_write_close();
-    $URL = "mainpage.php";
+    $URL = "index.php";
     echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
     echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 }

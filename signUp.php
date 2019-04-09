@@ -81,7 +81,7 @@
                         type: "post",
                         data: $("#userData").serialize(),
                         success: function (data) {
-                            if (data == 102) {
+                            if (data == 101) {
                                 alert("Username already exists");
                             } else {
                                 $("#userData").html(data);

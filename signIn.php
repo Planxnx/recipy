@@ -28,6 +28,8 @@
 <a href="forgetPassword.php">Forget Your password?</a> <br>
 <a href="signUp.php">Don't have an account?</a>
 
+<a href="index.php">Back to Home</a>
+
 <script type="text/javascript">
     $(document).ready(function () {
         $("#btnSignIn").click(function () {

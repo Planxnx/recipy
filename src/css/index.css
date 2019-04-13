@@ -17,6 +17,12 @@ body {
     overflow: hidden;
     background-color: #3C3C3C;
     height: 100px;
+    font-family: 'Kanit', sans-serif;
+    position: fixed;
+    top: 0;
+    overflow: hidden;
+    left: 0;
+  width: 100%;
 }
 
 .topNav a {

@@ -12,7 +12,6 @@ if ($objResult) {
   '" . $_POST["txtPassword"] . "','" . $_POST["txtName"] . "','" . $_POST["txtEmail"] . "')";
     $objQuery = mysqli_query($objCon, $strSQL);
     $_SESSION["uid"] = mysqli_insert_id($objCon);
-
     $strSQL = "SELECT name FROM user WHERE uid = '" . $_SESSION["uid"] . "' ";
     $objQuery = mysqli_query($objCon, $strSQL);
     $objResult = mysqli_fetch_array($objQuery);

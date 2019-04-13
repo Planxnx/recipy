@@ -16,6 +16,7 @@
                 $("#divCheckPasswordMatch").html("Passwords match.");
             }
         }
+
         $(document).ready(function () {
             $("#txtPassword, #txtConPassword").keyup(checkPasswordMatch);
         });
@@ -38,7 +39,8 @@
                 <td>&nbsp;Username</td>
             </tr>
             <tr>
-                <td><input required name="txtUsername" type="text" title="Please Enter Username" id="txtUsername"
+                <td><input required name="txtUsername" pattern="([A-Z]*)(?=.*[a-z])([0-9]*).{4,8}" type="text"
+                           title="Please Enter Username" id="txtUsername"
                            size="20">
                 </td>
             </tr>
@@ -46,7 +48,8 @@
                 <td>&nbsp;Password</td>
             </tr>
             <tr>
-                <td><input required name="txtPassword" title="Please Enter Password" type="password" id="txtPassword">
+                <td><input required name="txtPassword" pattern="(?=.*[A-Za-z0-9]).{4,16}" title="Please Enter Password"
+                           type="password" id="txtPassword">
                 </td>
             </tr>
             <tr>
@@ -61,7 +64,8 @@
                 <td>&nbsp;Email</td>
             </tr>
             <tr>
-                <td><input required name="txtEmail" type="email" id="txtEmail" size="35"></td>
+                <td><input required name="txtEmail" pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.([a-zA-Z]{2,4})$"
+                           type="email" id="txtEmail" size="35"></td>
             </tr>
             </tbody>
         </table>

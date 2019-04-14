@@ -1,6 +1,9 @@
 <?php
 session_start();
 include("../../../config.php");
+$_POST['txtUsername'] = mysqli_real_escape_string($objCon, $_POST['txtUsername']);
+$_POST['txtPassword'] = mysqli_real_escape_string($objCon, $_POST['txtPassword']);
+
 $strSQL = "SELECT * FROM user WHERE username =
 '" . mysqli_real_escape_string($objCon, $_POST['txtUsername']) . "'
 and password = '" . mysqli_real_escape_string($objCon, $_POST['txtPassword']) . "'";

@@ -17,6 +17,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $howTo = checkInput($_POST["txthowTo"]);
     $upload_image = new upload($_FILES['recipeImg']);
     if ($upload_image->uploaded) {
+        $upload_image->image_resize = true;
+        $upload_image->image_y = 300;
+        $upload_image->image_x = 300;
+        $upload_image->image_ratio_crop = true;
         $upload_image->file_new_name_body = md5(mt_rand());
         $upload_image->process("images");
         if ($upload_image->processed) {

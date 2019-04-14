@@ -1,10 +1,11 @@
-<!DOCTYPE html>
 <?php
+session_start();
 include 'config.php';
 $sql = "SELECT * FROM recipe ORDER BY RAND() ";
 $query = mysqli_query($objCon, $sql);
-session_start();
 ?>
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -44,6 +45,11 @@ session_start();
                         echo "คุณ " . $_SESSION["name"];
                         echo " &nbsp&nbsp&nbsp";
                         ?>
+                        <a href="./editProfile.php">
+                            <button type="button" class="btn btn-primary" id="btnCreateRecipe">
+                                <span class="glyphicon glyphicon-search">Edit Profile</span>
+                            </button>
+                        </a>
                         <a href="./src/service/auth/signOutService.php">
                             <button type="button" class="btn btn-primary" id="btnCreateRecipe">
                                 <span class="glyphicon glyphicon-search">Sign out</span>
@@ -69,17 +75,19 @@ session_start();
                         </button>
                     </a>
                 </div>
+
+                <form class="form-inline" name="searchform" id="searchform">
+                    <div class="form-group">
+                        <input type="text" name="searchText" id="searchText" class="form-control"
+                               placeholder="search here"
+                               autocomplete="off">
+                    </div>
+                    <button type="button" class="btn btn-primary" id="btnSearch">
+                        <span class="glyphicon glyphicon-search"></span>
+                        Search
+                    </button>
+                </form>
             </div>
-            <form class="form-inline" name="searchform" id="searchform">
-                <div class="form-group">
-                    <input type="text" name="searchText" id="searchText" class="form-control" placeholder="search here"
-                           autocomplete="off">
-                </div>
-                <button type="button" class="btn btn-primary" id="btnSearch">
-                    <span class="glyphicon glyphicon-search"></span>
-                    Search
-                </button>
-            </form>
         </div>
     </div>
     <div class="loading" style="margin-top: 1.5%">

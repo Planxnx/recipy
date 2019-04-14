@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/ico" href="src/img/icon.png" />
+    <title>Recipy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./src/css/default.css">
+    <link rel="stylesheet" href="./src/css/recipe.css">
+
+</head>
+
+<body>
+    <div class="topNav shadow">
+        <div class="homeButton">
+            <a href="index.php"> <img style="width: 80%" src="src/img/logo.png"></a>
+        </div>
+        <div class="topButton">
+            <div>
+                <button class="shadow" type="submit">Sign In</button>
+            </div>
+            <button class="shadow" type="submit">Create new Recipe</button>
+        </div>
+        <div class="search-container">
+            <form id="searchform">
+                <input style="float:left" type="text" name="searchText" id="searchText"
+                    placeholder="search recipe here">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+    </div>
+    <div id="content">
+        <div id="list-data">
+             <div class="column-info">
+                <img class="shadow" src="./src/service/recipe/images/mockImg.jpg">
+                <span class="data-detail">ไก่ไข่ควายงู</span> <br>
+                <span class="data-detail">Quick & Easy</span> <br>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+                <div class="data-vote">
+                    <button type="button" class="shadow">
+                        <span>LIKE : 999</span>
+                    </button>
+                    <button type="button" class="shadow">
+                        <span>DISLIKE : 111</span>
+                    </button>
+                </div>
+            </div>
+            <div class="column-detail shadow">
+                <div class="data-ingredient">
+                    <span class="data-header">Ingredient</span>
+                    <p>
+                        1.ก้านผักเหลียงแช่น้ำ ล้างน้ำ สะบัดน้ำออกให้หมด 2.ริดใบเหลียงออกจากก้าน
+                        หากใบเหลียงใหญ่มากตัดให้เล็กลงได้ 3.กระเทียม ปอกเปลือก ล้างน้ำ ทุบ สับพอหยาบ
+                        4.ผสมซอสสำหรับผัดใส่ถ้วยใบย่อม คือ ซอสหอยนางรม น้ำปลาและน้ำตาลทราย คนให้เข้ากัน 5.ตั้งกระทะ
+                        ใส่น้ำมัน ตั้งไฟกลาง รอน้ำมันอุ่น 6.น้ำมันอุ่นแล้วนำกระเทียมลงไปเจียวพอหอมหรือเริ่มเหลือง
+                        7.เทใบเหลียงใส่ลงไป ผัดพอให้ใบเหลียงถูกไฟทั่ว 8.ตอกไข่ใส่
+                        แล้วใช้ตะหลิวยีให้ไข่แดงแตกคนพอให้ทั่วไข่ขาว รอให้ไข่ด้านล่างสุก
+                        9.ไข่ด้านล่างสุกแล้วจึงกลับด้านบนลงด้านล่าง และด้านล่างขึ้นมาบน 10.ราดซอสที่เตรียมไว้ให้ทั่ว
+                        รอไข่สุกผัดให้ทั่วกันด้วยไฟแรงสักพัก
+                    </p>
+                </div>
+                <div class="data-how">
+                    <span class="data-header">How to</span>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+                        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+                        occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+                        laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+                        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+                        occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+                        laborum.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</body>
+</html>

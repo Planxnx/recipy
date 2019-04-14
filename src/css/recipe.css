@@ -5,11 +5,13 @@
 }
 
 .column-info {
-    width: 35%;
+    width: 30%;
     float: left;
     text-align: center;
     color: #707070;
     margin-bottom: 3%;
+    position: fixed;
+    overflow: hidden;
 }
 
 .column-info .data-detail {
@@ -34,19 +36,34 @@
     margin-bottom: 5%;
 }
 
+.column-info img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+    margin-bottom: 5%;
+}
+
+.column-info p {
+    margin-left: 10%;
+    margin-right: 10%;
+    text-align: center;
+}
+
 .data-vote button {
-    margin-top: 4%;
+    margin-top: 1%;
     background: #EE801E;
     font-size: 17px;
     border: none;
     cursor: pointer;
     color: #F7F9F9;
+    margin-bottom: 2%;
 }
 
 .data-vote button:hover {
     background: #D69764;
     color: #F1EDEA;
-    box-shadow: 0 6px 9px rgba(40, 40, 40, 0.25), 0 6px 9px rgba(40, 40, 40, 0.22);
+    box-shadow: 0 4px 7px rgba(40, 40, 40, 0.25), 0 4px 7px rgba(40, 40, 40, 0.22);
 
 }
 
@@ -64,11 +81,13 @@ button[disabled] {
 .data-ingredient p {
     margin-left: 10%;
     margin-right: 10%;
+    text-align: justify;
 }
 
 .data-how p {
     margin-left: 10%;
     margin-right: 10%;
+    text-align: justify;
 }
 
 .data-how {

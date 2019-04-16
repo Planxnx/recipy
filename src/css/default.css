@@ -48,25 +48,7 @@ body {
     width: 15%;
 }
 
-.topNav .search-container {
-    float: right;
-    margin-right: 2%;
-}
 
-.topNav .search-container button {
-    float: right;
-    padding: 6px 10px;
-    margin-top: 8px;
-    margin-right: 16px;
-    background: #E6E6E6;
-    font-size: 17px;
-    border: none;
-    cursor: pointer;
-}
-
-.topNav .search-container button:hover {
-    background: #ccc;
-}
 
 .topButton {
     padding-top: 2%;
@@ -83,4 +65,37 @@ body {
     border: none;
     cursor: pointer;
     color: #F7F9F9;
+}
+
+.topNav .search-container {
+    float: right;
+    box-sizing: border-box;
+    margin-right: 2%;
+}
+
+.topNav .search-container button {
+    float: left;
+    padding: 6px 10px;
+    margin-top: 8px;
+    margin-left: -16px;
+    background: #E6E6E6;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+}
+
+.topNav .search-container button:hover {
+    background: #ccc;
+}
+
+.topNav .search-container #searchText {
+    float: left;
+    width: 65%;
+    padding: 6px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+.topNav .search-container #searchText:focus {
+    width: 80%;
 }

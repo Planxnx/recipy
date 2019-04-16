@@ -64,7 +64,7 @@
 .data-vote button:hover {
     background: #D69764;
     color: #F1EDEA;
-    box-shadow: 0 4px 7px rgba(40, 40, 40, 0.25), 0 4px 7px rgba(40, 40, 40, 0.22);
+    box-shadow: 0 4px 7px rgba(0, 0, 0, 0.2), 0 4px 7px rgba(0, 0, 0, 0.2);
 
 }
 

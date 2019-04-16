@@ -4,13 +4,13 @@
     margin-bottom: 140px;
 }
 
-.form-box{
+.form-box {
     background-color: #F0F0F0;
-    width: 60%;
+    width: 50%;
     display: block;
     margin-left: auto;
     margin-right: auto;
-    padding: 5%;
+    padding: 7%;
     padding-top: 2%;
 }
 
@@ -24,4 +24,36 @@
 
 #form1 {
     color: #707070;
+    line-height: 170%;
+}
+
+#form1 button {
+    background: #EE801E;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+    color: #F7F9F9;
+    padding: 2%;
+    padding-left: 4%;
+    padding-right: 4%;
+    float: right;
+}
+
+#txtname,
+#ddlcategory {
+    width: 40%;
+    border: none;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+#txtname:focus {
+    width: 80%;
+}
+
+#txtdescription,
+#txthowTo,
+#txtingredient {
+    width: 100%;
+    resize: none;
 }

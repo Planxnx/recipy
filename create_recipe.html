@@ -36,11 +36,27 @@
             <div class="form-header">
                 <span>Create new recipe</span>
             </div>
-            <form id="form1" method="POST" action="">
-                <span>Recipe Name</span>
-                <input name="txtname" type="text" id="txtname" required >
-                <span>Food Image</span>
-                <input type="file" name="recipeImg">
+            <form id="form1" method="POST" action="./src/service/recipe/create_recipe_service.php">
+                <label for="txtname">Recipe Name</label><br>
+                <input name="txtname" type="text" id="txtname" required><br>
+                <label for="recipeImg">Food Image</label><br>
+                <input required type="file" name="recipeImg"><br>
+                <label for="ddlcategory">Category of Recipe</label><br>
+                <select required name="ddlcategory" id="ddlcategory">
+                    <option value="Everyday">Everyday</option>
+                    <option value="Quick & Easy">Quick & Easy</option>
+                    <option value="Healthy">Healthy</option>
+                    <option value="Dessert">Dessert</option>
+                    <option value="Cake & Baking">Cake & Baking</option>
+                    <option value="Drinks">Drinks</option>
+                </select><br>
+                <label for="txtdescription">Description</label><br>
+                <textarea required name="txtdescription" id="txtdescription" cols="30" rows="3" ></textarea><br>
+                <label for="txtingredient">Ingredient</label><br>
+                <textarea required name="txtingredient" id="txtingredient" cols="30" rows="10" ></textarea><br>
+                <label for="txthowTo">How to</label><br>
+                <textarea required name="txthowTo" id="txthowTo" cols="30" rows="10" ></textarea><br>
+                <button type="submit" >Create</button>
             </form>
         </div>
     </div>

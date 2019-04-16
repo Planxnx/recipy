@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/ico" href="src/img/icon.png" />
+    <title>Recipy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./src/css/default.css">
+    <link rel="stylesheet" href="./src/css/create_recipe.css">
+
+</head>
+
+<body>
+    <div class="topNav shadow">
+        <div class="homeButton">
+            <a href="index.php"> <img style="width: 80%" src="src/img/logo.png"></a>
+        </div>
+        <div class="topButton">
+            <div>
+                <button class="shadow" type="submit">Sign In</button>
+            </div>
+            <button class="shadow" type="submit">Create new Recipe</button>
+        </div>
+        <div class="search-container">
+            <form id="searchform">
+                <input style="float:left" type="text" name="searchText" id="searchText"
+                    placeholder="search recipe here">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+    </div>
+    <div id="content">
+        <div class="form-box shadow">
+            <div class="form-header">
+                <span>Create new recipe</span>
+            </div>
+            <form id="form1" method="POST" action="">
+                Name
+            </form>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</body>
+
+</html>

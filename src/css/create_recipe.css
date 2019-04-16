@@ -1,0 +1,27 @@
+#content {
+    margin: 60px;
+    margin-top: 140px;
+    margin-bottom: 140px;
+}
+
+.form-box{
+    background-color: #F0F0F0;
+    width: 60%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5%;
+    padding-top: 2%;
+}
+
+.form-header {
+    text-align: center;
+    color: #F39C12;
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 2%
+}
+
+#form1 {
+    color: #707070;
+}

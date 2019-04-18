@@ -68,11 +68,15 @@
 
 }
 
-.data-vote button:disabled,
 button[disabled] {
     background: #D69764;
     color: #F1EDEA
 }
+
+button[disabled]:hover {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
 
 .footer {
     background: #E6E6E6;

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/ico" href="src/img/icon.png" />
+    <title>Recipy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./src/css/default.css">
+    <link rel="stylesheet" href="./src/css//sign_in.css">
+</head>
+
+<body>
+    <div id="main">
+        <div id="signin" class="shadow">
+            <div class="form-header">
+                <img src="./src//img/logo.png" alt=""> <br>
+                <span>Sign in</span>
+            </div>
+            <form name="form1" id="userData">
+                <div class="form-data">
+                    <label for="txtUsername">Username</label><br>
+                    <input required name="txtUsername" type="text" id="txtUsername"><br>
+                    <label for="txtPassword">Password</label><br>
+                    <input required name="txtPassword" type="password" id="txtPassword"><br>
+                    <input type="submit" name="btnSignIn" id="btnSignIn" value="Sign in"> <br>
+                    <a href="">Forgot your password ?</a>
+                </div>
+            </form>
+            <div class="signup-button">
+                <a href="#signup" id="signupLink">Don't have an account?</a>
+            </div>
+        </div>
+        <div id="signup">
+            <div class="detail-column">
+                <div class="form-header">
+                    <img src="./src//img/logo.png" alt=""> <br>
+                    <span>Sign up</span>
+                </div>
+            </div>
+            <div class="form-column">
+                    <form name="form1" id="userData">
+                            <div class="form-data">
+                                <label for="txtUsername">Username</label><br>
+                                <input required name="txtUsername" type="text" id="txtUsername"><br>
+                                <label for="txtPassword">Password</label><br>
+                                <input required name="txtPassword" type="password" id="txtPassword"><br>
+                                <input type="submit" name="btnSignIn" id="btnSignIn" value="Sign in"> <br>
+                                <a href="">Forgot your password ?</a>
+                            </div>
+                        </form>
+                        <div class="signup-button">
+                            <a href="#signup" id="signupLink">Don't have an account?</a>
+                        </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="./src/js/sign_in.js"></script>
+</body>
+
+</html>

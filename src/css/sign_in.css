@@ -4,7 +4,7 @@
 
 #signin {
     width: 25%;
-    background: #F0F0F0;
+    background: #FFFFFF;
     display: block;
     margin: auto;
     margin-top: 10%;
@@ -27,7 +27,7 @@
 
 
 
-.form-header {
+#signin .form-header {
     text-align: center;
     display: block;
     margin-left: auto;
@@ -49,16 +49,17 @@
     text-align: center;
 }
 
-.form-data input[type=text],
-input[type=password] {
+input[type=text],
+input[type=password],
+input[type=email] {
     width: 32%;
-    border: none;
     -webkit-transition: width 0.4s ease-in-out;
     transition: width 0.4s ease-in-out;
 }
 
-.form-data input[type=text]:focus,
-input[type=password]:focus {
+input[type=text]:focus,
+input[type=password]:focus,
+input[type=email]:focus {
     width: 60%;
 }
 
@@ -97,10 +98,12 @@ a:hover {
 }
 
 .detail-column {
+    text-align: left;
     float: left;
     width: 35%;
     background: #F0F0F0;
     height: 500px;
+    padding-left: 4%;
     box-shadow: 4px 6px 8px rgba(0, 0, 0, 0.2);
 
 }
@@ -113,8 +116,43 @@ a:hover {
     box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.2);
 }
 
+.form-column form {
+    margin-top: 12%;
+    margin-left: 15%;
+    text-align: justify;
+    line-height: 2;
+}
 
-#signup .form-header img {
-    margin-top: 4%;
-    width: 30%;
+
+#signup .detail-footer img {
+    margin-top: 30%;
+    width: 50%;
+}
+
+#signup .detail-body p {
+    margin-bottom: 10%;
+}
+
+#signup .detail-header {
+    margin-top: 12%;
+    margin-bottom: 25%;
+    display: block;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+#btnSignUp {
+    width: 18%;
+    background: #EE801E;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+    color: #F7F9F9;
+    margin-top: 3%;
+}
+
+.signin-button {
+    margin-top: 8%;
+    margin-left: 5%;
+    text-align: left;
 }

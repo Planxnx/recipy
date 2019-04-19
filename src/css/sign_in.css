@@ -64,7 +64,7 @@ input[type=email]:focus {
 }
 
 #btnSignIn {
-    width: 18%;
+    width: 24%;
     background: #EE801E;
     font-size: 17px;
     border: none;
@@ -142,7 +142,7 @@ a:hover {
 }
 
 #btnSignUp {
-    width: 18%;
+    width: 24%;
     background: #EE801E;
     font-size: 17px;
     border: none;

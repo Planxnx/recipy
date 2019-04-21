@@ -10,7 +10,9 @@ $i = 1;
 foreach ($fullResult as $value) { ?>
     <div class="box-data column">
         <a href="recipe.php?recipeId=<?php echo $value['recipeId'] ?>">
-            <img style="width: 50%" src="./src/service/recipe/images/<?php echo $value['recipeImg']; ?>">
+            <div class="crop">
+                <img src="./src/service/recipe/images/<?php echo $value['recipeImg']; ?>">
+            </div>
             <span class="data-detail"><?php echo $value['name']; ?></span> <br>
             <span class="data-detail"><?php echo $value['category']; ?></span>
         </a>
@@ -30,8 +32,10 @@ if ($fullSimilarResult) {
     $i = 1;
     foreach ($fullSimilarResult as $value) { ?>
         <div class="box-data column">
+            <div class="crop">
+                <img src="./src/service/recipe/images/<?php echo $value['recipeImg']; ?>">
+            </div>
             <a href="recipe.php?recipeId=<?php echo $value['recipeId'] ?>">
-                <img style="width: 50%" src="./src/service/recipe/images/<?php echo $value['recipeImg']; ?>">
                 <span class="data-detail"><?php echo $value['name']; ?></span> <br>
                 <span class="data-detail"><?php echo $value['category']; ?></span>
             </a>

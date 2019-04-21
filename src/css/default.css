@@ -209,3 +209,16 @@ hr {
     float: left;
     font-size: 17px;
 }
+
+.profile-btn {
+    margin-top: -1%;
+    float: right;
+    color: #F1EDEA;
+}
+
+.profile-btn a{
+    font-size: 14px;
+    color: #EE801E;
+}
+
+

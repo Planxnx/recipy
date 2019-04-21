@@ -73,7 +73,7 @@ $query = mysqli_query($objCon, $sql);
             <span class="data-detail"><?php echo $resultRecipe['category']; ?></span> <br>
             <span class="data-detail"><?php echo $resultRecipe['created_by']; ?></span><br>
             <p>
-                <?php echo $resultRecipe['description']; ?>
+                <?php echo nl2br($resultRecipe['description']); ?>
             </p>
             <div class="data-vote">
                 <?php
@@ -103,13 +103,13 @@ $query = mysqli_query($objCon, $sql);
             <div class="data-ingredient">
                 <span class="data-header">Ingredient</span>
                 <p>
-                    <?php echo $resultRecipe['ingredient']; ?>
+                    <?php echo nl2br($resultRecipe['ingredient']); ?>
                 </p>
             </div>
             <div class="data-how">
                 <span class="data-header">How to</span>
                 <p>
-                    <?php echo $resultRecipe['howTo']; ?>
+                    <?php echo nl2br($resultRecipe['howTo']); ?>
                 </p>
             </div>
         </div>

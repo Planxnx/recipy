@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./src/css/default.css">
     <link rel="stylesheet" href="./src/css/index.css">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="./src/js/index.js"></script>
 </head>
 
 <body>
@@ -39,6 +40,55 @@
         </div>
     </div>
     <div id="content">
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span>Welcome to Recipy</span> <br>
+                    <span style="font-size: 14px">คอมมิวนิตี้สำหรับแบ่งปันสูตรอาหารทุกประเภท
+                        สามารถค้นหาสูตรอาหารที่คุณต้องการได้ที่เว็บนี้</span>
+                    <hr>
+                </div>
+                <div class="modal-body">
+                    <div class="featured-header">
+                        <span>Featured</span>
+                    </div>
+                    <div class="featured-body">
+                        <span>
+                            ✔ Intelligent Search <br>
+                            หากคุณมีส่วนผสมในตู้เย็น แต่ไม่รู้จะทำเมนูอะไรทานดี ลองใช้ <span style="color: #EE801E">Intelligent Search</span> ดูสิ <br>
+                            ช่องค้นหาเพียงช่องเดียวที่สามารถใส่คำค้นหาได้ทั้ง ชื่อสูตร , ส่วนผสม หรือ วิธีการทำ
+                            เพื่อผลลัพธ์ของคุณ<br>
+                            ตัวอย่างเช่น "กล้วย นม น้ำตาล ช็อกโกแลต" , "ไก่ ทอด" หรือ "แกงเขียวหวานไก่" <br>
+                        </span>
+                        <span style="font-size:13px;">
+                            * เว้นวรรคด้วย Spacebar สำหรับการค้นหาหลายคำ
+                        </span>
+                    </div>
+                    <div class="featured-body">
+                        <span>
+                            ✔ Community Vote <br>
+                            สูตรอาหารนี้คุณทำแล้วถูกใจคุณหรือป่าว ? <br>
+                            แบ่งปันความรู้สึกของคุณต่อสูตรอาหารด้วยการโหวตกัน
+                        </span>
+                    </div>
+                    <div class="featured-footer">
+                        <span>
+                            ลองเอาเมาส์มาวางที่ไอคอนนี้สิ่
+                        </span>
+                        <div class="tooltip" style="font-size: 24px;">
+                            <i class="fa fa-info-circle" aria-hidden="true"></i>
+                            <span class="tooltiptext tooltip-right " style="width: 1300%;">
+                                คุณจะเจอคำแนะนำสำหรับการใช้งาน หากคุณเอาเมาส์มาวางที่ไอคอนนี้
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <input type="submit" name="btnConfirm" id="closeBtn" value="Close">
+                </div>
+                <hr style="color:#FFFFFF; border: none;">
+            </div>
+        </div>
         <div class="list-header">
             <span>Random Recipe</span>
         </div>

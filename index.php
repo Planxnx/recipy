@@ -133,6 +133,9 @@ $query = mysqli_query($objCon, $sql);
     </div>
 </div>
 <script>
+    <?php
+    if (!isset($_SESSION["uid"])) {
+    ?>
     $(document).ready(function () {
         $('#myModal').css('display', 'block')
 
@@ -141,6 +144,9 @@ $query = mysqli_query($objCon, $sql);
         });
 
     });
+    <?php
+    }
+    ?>
     $(function () {
         $("#btnSearch").click(function (e) {
             e.preventDefault();

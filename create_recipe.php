@@ -1,25 +1,23 @@
 <?php
 session_start();
-
-if (!isset($_SESSION["uid"])){
+if (!isset($_SESSION["uid"])) {
     $URL = "signIn.php";
     echo "<script type='text/javascript'> alert('Please SignIn to Create new Recipe') </script>";
     echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
     echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 }
-
 ?>
 
 <html>
 <body>
 <center><h3>Create New Recipe</h3></center>
-<form name="form1" method="post" action="./src/service/recipe/create_recipe_service.php">
+<form name="form1"  enctype="multipart/form-data" method="post" action="./src/service/recipe/create_recipe_service.php">
     <center>
         <table border="0" width="250" style="width: 200px">
             <tbody>
             <tr>
                 <td width="50">
-                    <center><input type="file" name="recipeImg"></center>
+                    <input type="file" name="recipeImg" id="recipeImg">
                 </td>
                 <td width="50">
                     <table border="0">
@@ -28,7 +26,7 @@ if (!isset($_SESSION["uid"])){
                             <td>Food Name</td>
                         </tr>
                         <tr>
-                            <td><input name="txtname" type="text" id="txtname" required ></td>
+                            <td><input name="txtname" type="text" id="txtname" required></td>
                         </tr>
                         <tr>
                             <td>Category Of Food</td>
@@ -54,7 +52,7 @@ if (!isset($_SESSION["uid"])){
             </tr>
             <tr>
                 <td colspan="2" width="200">
-                    <textarea name="txtdescription" id="txtdescription" cols="30" rows="5" ></textarea>
+                    <textarea name="txtdescription" id="txtdescription" cols="30" rows="5"></textarea>
 
                 </td>
             </tr>

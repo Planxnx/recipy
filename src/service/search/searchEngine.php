@@ -1,6 +1,7 @@
 <?php
 include '../../../config.php';
-echo "<script>console.log( 'search!!' )</script>";
+
+$_POST['searchText'] = mysqli_real_escape_string($objCon,$_POST['searchText']);
 
 abstract class BasicEnum
 {

@@ -111,9 +111,11 @@ hr {
 }
 
 .tooltip {
-    position: relative;
     display: inline-block;
     color: #EE801E;
+}
+.tooltip:hover {
+    position: relative;
 }
 
 .tooltip .tooltiptext {

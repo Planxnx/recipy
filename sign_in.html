@@ -56,17 +56,38 @@
                     <div class="form-data">
                         <label for="txtUsername">Username</label><br>
                         <input required name="txtUsername" pattern="([A-Z]*)(?=.*[a-z])([0-9]*).{4,8}" type="text"
-                            id="txtUsername" size="20"><br>
+                            id="txtUsername" size="20">
+                        <div class="tooltip" style="font-size: 17px;">
+                            <i class="fa fa-info-circle" aria-hidden="true"></i>
+                            <span class="tooltiptext tooltip-right " style="width: 1700%;">
+                                username length: 4 - 8 character
+                            </span>
+                        </div>
+                        <br>
                         <label for="txtEmail">Email</label><br>
                         <input required name="txtEmail" pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.([a-zA-Z]{2,4})$"
                             type="email" id="txtEmail" size="35"> <br>
-                        <label for="txtNewPassword">Password</label><br>
+                        <label for="txtNewPassword">Password</label>
+                        <br>
                         <input required name="txtNewPassword" type="password" pattern="(?=.*[A-Za-z0-9]).{4,16}"
-                            id="txtNewPassword" onChange="checkPasswordMatch();"><br>
+                            id="txtNewPassword" onChange="checkPasswordMatch();">
+                        <div class="tooltip" style="font-size: 17px;">
+                            <i class="fa fa-info-circle" aria-hidden="true"></i>
+                            <span class="tooltiptext tooltip-right " style="width: 1700%;">
+                                password length: 4 - 16 character
+                            </span>
+                        </div>
+                        <br>
                         <label for="txtConPassword">Repeat Password</label><br>
                         <input required name="txtConPassword" type="password" pattern="(?=.*[A-Za-z0-9]).{4,16}"
                             id="txtConPassword" onChange="checkPasswordMatch();"><br>
                         <input type="submit" name="btnSignUp" id="btnSignUp" value="Sign up">
+                        <div class="tooltip" style="font-size: 17px;">
+                            <i class="fa fa-info-circle" aria-hidden="true"></i>
+                            <span class="tooltiptext tooltip-right " style="width: 2000%;">
+                                Will alert message ,when you don't follow the rules
+                            </span>
+                        </div>
                         <div class="registrationFormAlert" id="divCheckPasswordMatch">
                              
                         </div>
@@ -75,6 +96,7 @@
                 <div class="signin-button">
                     <a href="#signin" id="signinLink">Do you have a Recipy account?</a>
                 </div>
+
             </div>
 
         </div>

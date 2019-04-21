@@ -7,6 +7,7 @@
 
 body {
     background: #E6E6E6;
+    color: #707070;
 }
 
 .shadow {
@@ -68,16 +69,18 @@ body {
 }
 
 .topNav .search-container {
-    float: right;
+    float: left;
     box-sizing: border-box;
-    margin-right: 2%;
+    margin-left: 3%;
+    width: 30%;
 }
 
 .topNav .search-container button {
     float: left;
     padding: 6px 10px;
+    margin: 0;
     margin-top: 8px;
-    margin-left: -16px;
+    margin-left: -20px;
     background: #E6E6E6;
     font-size: 17px;
     border: none;
@@ -90,12 +93,112 @@ body {
 
 .topNav .search-container #searchText {
     float: left;
-    width: 65%;
+    width: 40%;
     padding: 6px;
     -webkit-transition: width 0.4s ease-in-out;
     transition: width 0.4s ease-in-out;
 }
 
 .topNav .search-container #searchText:focus {
-    width: 80%;
+    width: 75%;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    color: #EE801E;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    position: absolute;
+    width: 200px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 14px;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+.tooltip-right {
+    top: -5px;
+    left: 125%;
+}
+
+.tooltip-right::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent #555 transparent transparent;
+}
+
+.tooltip-bottom {
+    top: 135%;
+    left: 50%;
+    margin-left: -60px;
+}
+
+.tooltip-bottom::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent #555 transparent;
+}
+
+.tooltip-top {
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+}
+
+.tooltip-top::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+.tooltip-left {
+    top: -5px;
+    bottom: auto;
+    right: 128%;
+}
+
+.tooltip-left::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent transparent #555;
+}
+
+.tooltip-icon {
+    padding: 6px 10px;
+    margin-top: 8px;
+    float: left;
+    font-size: 17px;
 }

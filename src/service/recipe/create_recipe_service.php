@@ -48,7 +48,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 function checkInput($data)
 {
     $data = trim($data);
-    $data = stripslashes($data);
     return $data;
 }
 

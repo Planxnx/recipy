@@ -87,7 +87,7 @@
     font-size: 24px;
 }
 
-.modal-header hr {
+hr {
     border: 0;
     height: 0;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
@@ -122,3 +122,15 @@ a {
 a:hover {
     text-decoration: underline;
 }
+
+.profile-btn {
+    margin-top: -1%;
+    float: right;
+    color: #F1EDEA;
+}
+
+.profile-btn a{
+    font-size: 14px;
+    color: #EE801E;
+}
+

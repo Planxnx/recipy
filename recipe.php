@@ -75,7 +75,7 @@ $query = mysqli_query($objCon, $sql);
             <p>
                 <?php echo nl2br($resultRecipe['description']); ?>
             </p>
-            <div class="data-vote">
+            <div class="data-vote" id="data-vote">
                 <?php
                 $sql = "SELECT * FROM recipe_vote WHERE recipeId = '" . $_GET['recipeId'] . "' AND voteType = 'like';";
                 $query = mysqli_query($objCon, $sql);
@@ -91,10 +91,10 @@ $query = mysqli_query($objCon, $sql);
                     }
                 }
                 ?>
-                <button <?php if (empty($enableVote)) echo "disabled" ?> type="button" class="shadow">
+                <button <?php if (empty($enableVote)) echo "disabled" ?> type="button" onclick="voteRecipe('like')" class="shadow">
                     <span>LIKE :  <?php echo $likeCount; ?></span>
                 </button>
-                <button <?php if (empty($enableVote)) echo "disabled" ?> type="button" class="shadow">
+                <button <?php if (empty($enableVote)) echo "disabled" ?> type="button" onclick="voteRecipe('dislike')" class="shadow">
                     <span>DISLIKE : <?php echo $dislikeCount; ?></span>
                 </button>
             </div>
@@ -154,7 +154,7 @@ $query = mysqli_query($objCon, $sql);
                 uid: <?php echo $_SESSION['uid'] ?>
             },
             success: function (data) {
-                $("#voteBox").load(location.href + " #voteBox");
+                $("#data-vote").load(location.href + " #data-vote");
             }
         });
     }

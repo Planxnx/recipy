@@ -15,6 +15,44 @@ $(document).ready(function () {
         $("#txtNewPassword, #txtConPassword").keyup(checkPasswordMatch);
     });
 
+    $("#btnSignIn").click(function () {
+        var valid = this.form.checkValidity();
+        if (valid) {
+            event.preventDefault();
+            $.ajax({
+                url: "./src/service/auth/signInService.php",
+                type: "post",
+                data: $("#signinData").serialize(),
+                success: function (data) {
+                    if (data == 101) {
+                        alert("Username or Password Incorrect!");
+                    } else {
+                        $("#signinData").html(data);
+                    }
+                }
+            });
+        }
+    });
+    $("#btnSignUp").click(function () {
+        var valid = this.form.checkValidity();
+        if (valid) {
+            event.preventDefault();
+            $.ajax({
+                url: "./src/service/auth/signUpService.php",
+                type: "post",
+                data: $("#userData").serialize(),
+                success: function (data) {
+                    if (data == 101) {
+                        alert("Username already exists");
+                    } else if (data == 102) {
+                        alert("Email already exists");
+                    } else {
+                        $("#userData").html(data);
+                    }
+                }
+            });
+        }
+    });
 });
 
 function checkPasswordMatch() {

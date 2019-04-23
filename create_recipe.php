@@ -2,7 +2,7 @@
 session_start();
 session_start();
 if (!isset($_SESSION["uid"])) {
-    $URL = "signIn.php";
+    $URL = "sign_in.php";
     echo "<script type='text/javascript'> alert('Please SignIn to Create new Recipe') </script>";
     echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
     echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
@@ -44,7 +44,7 @@ if (!isset($_SESSION["uid"])) {
             } else {
             ?>
             <div class="profile-btn" style="margin-top: 0;">
-                <button class="shadow" onclick="window.location.href = './signIn.php';">Sign In</button> <?php
+                <button class="shadow" onclick="window.location.href = './sign_in.php';">Sign In</button> <?php
                 }
                 ?>
             </div>

@@ -40,7 +40,7 @@ $query = mysqli_query($objCon, $sql);
             } else {
             ?>
             <div class="profile-btn" style="margin-top: 0;">
-                <button class="shadow" onclick="window.location.href = './signIn.php';">Sign In</button> <?php
+                <button class="shadow" onclick="window.location.href = './sign_in.php';">Sign In</button> <?php
                 }
                 ?>
             </div>

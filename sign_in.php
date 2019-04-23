@@ -25,7 +25,7 @@
                 <label for="txtPassword">Password</label><br>
                 <input required name="txtPassword" type="password" id="txtPassword"><br>
                 <input type="submit" name="btnSignIn" id="btnSignIn" value="Sign in"> <br>
-                <a href="">Forgot your password ?</a>
+                <a href="forgetPassword.php">Forgot your password ?</a>
             </div>
         </form>
         <div class="signup-button">

@@ -1,3 +1,10 @@
+<?php
+session_start();
+include 'config.php';
+$sql = "SELECT * FROM recipe ORDER BY RAND() ";
+$query = mysqli_query($objCon, $sql);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

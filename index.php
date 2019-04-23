@@ -139,10 +139,10 @@ $query = mysqli_query($objCon, $sql);
     if (!isset($_SESSION["uid"])) {
     ?>
     $(document).ready(function () {
-        $('#myModal').css('display', 'block')
+        $('#myModal').show(0);
 
         $("#closeBtn").click(function () {
-            $('#myModal').css('display', 'none')
+            $('#myModal').hide(0);
         });
 
     });

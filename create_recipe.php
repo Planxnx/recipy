@@ -1,6 +1,5 @@
 <?php
 session_start();
-session_start();
 if (!isset($_SESSION["uid"])) {
     $URL = "sign_in.php";
     echo "<script type='text/javascript'> alert('Please SignIn to Create new Recipe') </script>";

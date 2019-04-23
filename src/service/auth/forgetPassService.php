@@ -11,9 +11,11 @@ $objQuery = mysqli_query($objCon, $strSQL);
 $objResult = mysqli_fetch_array($objQuery);
 
 if ($objResult) {
-    $strSQL = "UPDATE user SET password = '" . $_POST['txtnewPassword'] . "' WHERE username = '" . $_POST['txtUsername'] . "'";
+    $strSQL = "UPDATE user SET password = '" . $_POST['txtNewPassword'] . "' WHERE username = '" . $_POST['txtUsername'] . "'";
     $objQuery = mysqli_query($objCon, $strSQL);
-    header("location: ../../../signIn.php");
+    $URL = "sign_in.php";
+    echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+    echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 } else {
     echo 101;
 }

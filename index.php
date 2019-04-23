@@ -9,126 +9,150 @@ $query = mysqli_query($objCon, $sql);
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv=Content-Type content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/ico" href="src/img/icon.png"/>
     <title>Recipy</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <style>
-        body {
-            margin-top: 20px;
-        }
-
-        .loading {
-            background-image: url("src/img/logo.png");
-            background-repeat: no-repeat;
-            display: none;
-            height: 100px;
-            width: 100px;
-        }
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./src/css/default.css">
+    <link rel="stylesheet" href="./src/css/index.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 </head>
+
 <body>
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div id="top">
-                <a href="index.php"> <img style="width: 15%" src="src/img/logo.png"></a>
-                <?php
-                if (isset($_SESSION["uid"])) {
-                    ?>
-                    <div align="right">
-
-                        <?php
-
-                        echo "คุณ " . $_SESSION["name"];
-                        echo " &nbsp&nbsp&nbsp";
-                        ?>
-                        <a href="./editProfile.php">
-                            <button type="button" class="btn btn-primary" id="btnCreateRecipe">
-                                <span class="glyphicon glyphicon-search">Edit Profile</span>
-                            </button>
-                        </a>
-                        <a href="./src/service/auth/signOutService.php">
-                            <button type="button" class="btn btn-primary" id="btnCreateRecipe">
-                                <span class="glyphicon glyphicon-search">Sign out</span>
-                            </button>
-                        </a>
-                    </div> <?php
-                } else {
-                    ?>
-                    <div align="right">
-                        <a href="./signIn.php">
-                            <button type="button" class="btn btn-primary" id="btnCreateRecipe">
-                                <span class="glyphicon glyphicon-search">Sign in</span>
-                            </button>
-                        </a>
-                    </div> <?php
+<div class="topNav shadow">
+    <div class="homeButton">
+        <a href="index.php"> <img style="width: 80%" src="src/img/logo.png"></a>
+    </div>
+    <div class="topButton">
+        <?php
+        if (isset($_SESSION["uid"])) {
+        ?>
+        <div class="profile-btn">
+            <?php
+            echo "คุณ " . $_SESSION["name"];
+            echo " &nbsp&nbsp&nbsp";
+            ?>
+            <br>
+            <a href="./editProfile.php">Edit Profile</a><br>
+            <a href="./src/service/auth/signOutService.php">Sign out</a>
+            <?php
+            } else {
+            ?>
+            <div class="profile-btn" style="margin-top: 0;">
+                <button class="shadow" onclick="window.location.href = './sign_in.php';">Sign In</button> <?php
                 }
                 ?>
-                <div align="right">
-                    <a href="create_recipe.php">
-                        <button type="button" class="btn btn-primary" id="btnCreateRecipe">
-                            <span class="glyphicon glyphicon-search"></span>
-                            Create new Recipe
-                        </button>
-                    </a>
-                </div>
-
-                <form class="form-inline" name="searchform" id="searchform">
-                    <div class="form-group">
-                        <input type="text" name="searchText" id="searchText" class="form-control"
-                               placeholder="search here"
-                               autocomplete="off">
-                    </div>
-                    <button type="button" class="btn btn-primary" id="btnSearch">
-                        <span class="glyphicon glyphicon-search"></span>
-                        Search
-                    </button>
-                </form>
             </div>
+            <button class="shadow" onclick="window.location.href = './create_recipe.php';">Create new Recipe</button>
         </div>
-    </div>
-    <div class="loading" style="margin-top: 1.5%">
-        <h4>waiting</h4>
-    </div>
-    <div class="row" id="list-data" style="margin-top: 10px;">
-        <div class="col-md-12">
-            <table class="table table-bordered">
-                <thead>
-                <th>Random Recipe</th>
-                <tr>
-                    <th></th>
-                    <th>name</th>
-                    <th>category</th>
-                </tr>
-                </thead>
-                <tbody>
-                <?php $i = 1;
-                while ($value = mysqli_fetch_assoc($query)) { ?>
-                    <tr>
-                        <td><?php echo $i; ?></td>
-                        <td>
-                            <a href="recipe.php?recipeId=<?php echo $value['recipeId'] ?>"><?php echo $value['name']; ?></a>
-                        </td>
-                        <td><?php echo $value['category']; ?></td>
-                    </tr>
-                    <?php $i++;
-                    if ($i > 8) break;
-                }
-                mysqli_close($objCon);
-                ?>
-                </tbody>
-            </table>
+        <div class="search-container">
+            <form id="searchform">
+                <input style="float:left" type="text" name="searchText" id="searchText"
+                       placeholder="search recipe here">
+                <button type="submit" id="btnSearch"><i class="fa fa-search"></i></button>
+                <div class="tooltip tooltip-icon">
+                    <i class="fa fa-info-circle" aria-hidden="true"></i>
+                    <span class="tooltiptext tooltip-right " style="width: 800%;">
+                        try Intelligent Search <br>
+                        Ex. Ingredient / Recipe Name / How to
+                    </span>
+                </div>
+            </form>
         </div>
     </div>
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript">
+<div id="content">
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span>Welcome to Recipy</span> <br>
+                <span style="font-size: 14px">คอมมิวนิตี้สำหรับแบ่งปันสูตรอาหารทุกประเภท
+                        สามารถค้นหาสูตรอาหารที่คุณต้องการได้ที่เว็บนี้</span>
+                <hr>
+            </div>
+            <div class="modal-body">
+                <div class="featured-header">
+                    <span>Featured</span>
+                </div>
+                <div class="featured-body">
+                        <span>
+                            ✔ Intelligent Search <br>
+                            หากคุณมีส่วนผสมในตู้เย็น แต่ไม่รู้จะทำเมนูอะไรทานดี ลองใช้ <span
+                                    style="color: #EE801E">Intelligent Search</span> ดูสิ <br>
+                            ช่องค้นหาเพียงช่องเดียวที่สามารถใส่คำค้นหาได้ทั้ง ชื่อสูตร , ส่วนผสม หรือ วิธีการทำ
+                            เพื่อผลลัพธ์ของคุณ<br>
+                            ตัวอย่างเช่น "กล้วย นม น้ำตาล ช็อกโกแลต" , "ไก่ ทอด" หรือ "แกงเขียวหวานไก่" <br>
+                        </span>
+                    <span style="font-size:13px;">
+                            * เว้นวรรคด้วย Spacebar สำหรับการค้นหาหลายคำ
+                        </span>
+                </div>
+                <div class="featured-body">
+                        <span>
+                            ✔ Community Vote <br>
+                            สูตรอาหารนี้คุณทำแล้วถูกใจคุณหรือป่าว ? <br>
+                            แบ่งปันความรู้สึกของคุณต่อสูตรอาหารด้วยการโหวตกัน
+                        </span>
+                </div>
+                <div class="featured-footer">
+                        <span>
+                            ลองเอาเมาส์มาวางที่ไอคอนนี้สิ่
+                        </span>
+                    <div class="tooltip" style="font-size: 24px;">
+                        <i class="fa fa-info-circle" aria-hidden="true"></i>
+                        <span class="tooltiptext tooltip-right " style="width: 1300%;">
+                                คุณจะเจอคำแนะนำสำหรับการใช้งาน หากคุณเอาเมาส์มาวางที่ไอคอนนี้
+                            </span>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <input type="submit" name="btnConfirm" id="closeBtn" value="Close">
+            </div>
+            <hr style="color:#FFFFFF; border: none;">
+        </div>
+    </div>
+    <div id="list-data">
+        <div class="list-header">
+            <span>Random Recipe</span>
+        </div>
+        <?php $i = 1;
+        while ($value = mysqli_fetch_assoc($query)) { ?>
+            <div class="box-data column">
+                <a href="recipe.php?recipeId=<?php echo $value['recipeId'] ?>">
+                    <div class="crop">
+                        <img src="./src/service/recipe/images/<?php echo $value['recipeImg']; ?>">
+                    </div>
+                    <span class="data-detail"><?php echo $value['name']; ?></span> <br>
+                    <span class="data-detail"><?php echo $value['category']; ?></span>
+                </a>
+            </div>
+            <?php $i++;
+            if ($i > 8) break;
+        }
+        mysqli_close($objCon);
+        ?>
+    </div>
+</div>
+<script>
+    <?php
+    if (!isset($_SESSION["uid"])) {
+    ?>
+    $(document).ready(function () {
+        $('#myModal').show(0);
+
+        $("#closeBtn").click(function () {
+            $('#myModal').hide(0);
+        });
+
+    });
+    <?php
+    }
+    ?>
     $(function () {
-        $("#btnSearch").click(function () {
-            console.log("Click");
+        $("#btnSearch").click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
             $.ajax({
                 url: "./src/service/search/search.php",
                 type: "post",
@@ -143,17 +167,13 @@ $query = mysqli_query($objCon, $sql);
                 },
                 success: function (data) {
                     $("#list-data").html(data);
+                    console.log("search");
                 }
             });
-        });
-        $("#searchform").on("keyup keypress", function (e) {
-            var code = e.keycode || e.which;
-            if (code == 13) {
-                $("#btnSearch").click();
-                return false;
-            }
         });
     });
 </script>
 </body>
+
+
 </html>

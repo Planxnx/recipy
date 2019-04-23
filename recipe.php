@@ -4,120 +4,78 @@ include 'config.php';
 $sql = "SELECT * FROM recipe WHERE recipeId =" . $_GET['recipeId'];
 $query = mysqli_query($objCon, $sql);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv=Content-Type content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/ico" href="src/img/icon.png"/>
     <title>Recipy</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <style>
-        body {
-            margin-top: 20px;
-        }
-
-        .loading {
-            background-image: url("src/img/logo.png");
-            background-repeat: no-repeat;
-            display: none;
-            height: 100px;
-            width: 100px;
-        }
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./src/css/default.css">
+    <link rel="stylesheet" href="./src/css/index.css">
+    <link rel="stylesheet" href="./src/css/recipe.css">
 </head>
+
 <body>
-<div class="container">
-    <div class="row">
-        <div id="top">
-            <a href="index.php"> <img style="width: 15%" src="src/img/logo.png"></a>
+<div class="topNav shadow">
+    <div class="homeButton">
+        <a href="index.php"> <img style="width: 80%" src="src/img/logo.png"></a>
+    </div>
+    <div class="topButton">
+        <?php
+        if (isset($_SESSION["uid"])) {
+        ?>
+        <div class="profile-btn">
             <?php
-            if (isset($_SESSION["uid"])) {
-                ?>
-                <div align="right">
-
-                    <?php
-
-                    echo "คุณ " . $_SESSION["name"];
-                    echo " &nbsp&nbsp&nbsp";
-                    ?>
-                    <a href="./src/service/auth/signOutService.php">
-                        <button type="button" class="btn btn-primary" id="btnCreateRecipe">
-                            <span class="glyphicon glyphicon-search">Sign out</span>
-                        </button>
-                    </a>
-                </div> <?php
-            } else {
-                ?>
-                <div align="right">
-                    <a href="./signIn.php">
-                        <button type="button" class="btn btn-primary" id="btnCreateRecipe">
-                            <span class="glyphicon glyphicon-search">Sign in</span>
-                        </button>
-                    </a>
-                </div> <?php
-            }
+            echo "คุณ " . $_SESSION["name"];
+            echo " &nbsp&nbsp&nbsp";
             ?>
-            <div align="right">
-                <a href="create_recipe.php">
-                    <button type="button" class="btn btn-primary" id="btnCreateRecipe">
-                        <span class="glyphicon glyphicon-search"></span>
-                        Create new Recipe
-                    </button>
-                </a>
+            <br>
+            <a href="./editProfile.php">Edit Profile</a><br>
+            <a href="./src/service/auth/signOutService.php">Sign out</a>
+            <?php
+            } else {
+            ?>
+            <div class="profile-btn" style="margin-top: 0;">
+                <button class="shadow" onclick="window.location.href = './sign_in.php';">Sign In</button> <?php
+                }
+                ?>
             </div>
-
-            <form class="form-inline" name="searchform" id="searchform">
-                <div class="form-group">
-                    <input type="text" name="searchText" id="searchText" class="form-control"
-                           placeholder="search here"
-                           autocomplete="off">
+            <button class="shadow" onclick="window.location.href = './create_recipe.php';">Create new Recipe</button>
+        </div>
+        <div class="search-container">
+            <form id="searchform">
+                <input style="float:left" type="text" name="searchText" id="searchText"
+                       placeholder="search recipe here">
+                <button type="submit" id="btnSearch"><i class="fa fa-search"></i></button>
+                <div class="tooltip tooltip-icon">
+                    <i class="fa fa-info-circle" aria-hidden="true"></i>
+                    <span class="tooltiptext tooltip-right " style="width: 800%;">
+                        try Intelligent Search <br>
+                        Ex. Ingredient / Recipe Name / How to
+                    </span>
                 </div>
-                <button type="button" class="btn btn-primary" id="btnSearch">
-                    <span class="glyphicon glyphicon-search"></span>
-                    Search
-                </button>
             </form>
         </div>
     </div>
-    <div class="loading" style="margin-top: 1.5%">
-        <h4>waiting</h4>
-    </div>
-    <div class="row" id="list-data" style="margin-top: 10px;">
-        <div class="col-md-12">
-            <table class="table table-bordered">
-                <thead>
-                <th>Recipe</th>
-                <tr>
-                    <th>name</th>
-                    <th width="5%">category</th>
-                    <th>ingredient</th>
-                    <th>how to</th>
-                    <th>create by</th>
-                </tr>
-                </thead>
-                <tbody>
-                <?php $i = 1;
-                if ($result = mysqli_fetch_assoc($query)) { ?>
-                    <tr>
-                        <td><?php echo $result['name']; ?></td>
-                        <td><?php echo $result['category']; ?></td>
-                        <td><?php echo $result['ingredient']; ?></td>
-                        <td><?php echo $result['howTo']; ?></td>
-                        <td><?php echo $result['created_by']; ?></td>
-                    </tr>
-                    <?php $i++;
-                }
-                ?>
-                </tbody>
-            </table>
-            <img style="width: 50%" src="./src/service/recipe/images/<?php echo $result['recipeImg']; ?>">
-            <div id="voteBox">
-                <br>
-                <span class="glyphicon glyphicon-search"> Vote </span>
-                <br>
+</div>
+<div id="content">
+    <div id="list-data">
+        <div class="column-info">
+            <?php
+            if ($resultRecipe = mysqli_fetch_assoc($query)) {
+            ?>
+            <img class="shadow" src="./src/service/recipe/images/<?php echo $resultRecipe['recipeImg']; ?>">
+            <span class="data-detail"><?php echo $resultRecipe['name']; ?>ู</span> <br>
+            <span class="data-detail"><?php echo $resultRecipe['category']; ?></span> <br>
+            <span class="data-detail"><?php echo $resultRecipe['created_by']; ?></span><br>
+            <p>
+                <?php echo nl2br($resultRecipe['description']); ?>
+            </p>
+            <div class="data-vote" id="data-vote">
                 <?php
                 $sql = "SELECT * FROM recipe_vote WHERE recipeId = '" . $_GET['recipeId'] . "' AND voteType = 'like';";
                 $query = mysqli_query($objCon, $sql);
@@ -125,10 +83,6 @@ $query = mysqli_query($objCon, $sql);
                 $sql = "SELECT * FROM recipe_vote WHERE recipeId = '" . $_GET['recipeId'] . "' AND voteType = 'dislike';";
                 $query = mysqli_query($objCon, $sql);
                 $dislikeCount = mysqli_num_rows($query);
-                ?>
-                <span>LIKE: <?php echo $likeCount; ?>  </span>
-                <span> DISLIKE: <?php echo $dislikeCount; ?></span>
-                <?php
                 if (isset($_SESSION["uid"])) {
                     $sql = "SELECT * FROM recipe_vote WHERE recipeId = '" . $_GET['recipeId'] . "' AND uid = '" . $_SESSION["uid"] . "';";
                     $query = mysqli_query($objCon, $sql);
@@ -137,25 +91,39 @@ $query = mysqli_query($objCon, $sql);
                     }
                 }
                 ?>
-                <div class="col-md-12">
-                    <button type="button" class="btn btn-primary" <?php if (empty($enableVote)) echo "disabled" ?>
-                            onclick="voteRecipe('like')" id="voteBtn">
-                        <span class="glyphicon glyphicon-search">Like</span>
-                    </button>
-                    <button type="button" class="btn btn-primary" <?php if (empty($enableVote)) echo "disabled" ?>
-                            onclick="voteRecipe('dislike')" id="voteBtn">
-                        <span class="glyphicon glyphicon-search">Dislike</span>
-                    </button>
-                    <br>
-                </div>
+                <button <?php if (empty($enableVote)) echo "disabled" ?> type="button" onclick="voteRecipe('like')" class="shadow">
+                    <span>LIKE :  <?php echo $likeCount; ?></span>
+                </button>
+                <button <?php if (empty($enableVote)) echo "disabled" ?> type="button" onclick="voteRecipe('dislike')" class="shadow">
+                    <span>DISLIKE : <?php echo $dislikeCount; ?></span>
+                </button>
             </div>
         </div>
+        <div class="column-detail shadow">
+            <div class="data-ingredient">
+                <span class="data-header">Ingredient</span>
+                <p>
+                    <?php echo nl2br($resultRecipe['ingredient']); ?>
+                </p>
+            </div>
+            <div class="data-how">
+                <span class="data-header">How to</span>
+                <p>
+                    <?php echo nl2br($resultRecipe['howTo']); ?>
+                </p>
+            </div>
+        </div>
+        <?php
+        }
+        ?>
     </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript">
+<script>
     $(function () {
-        $("#btnSearch").click(function () {
+        $("#btnSearch").click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
             $.ajax({
                 url: "./src/service/search/search.php",
                 type: "post",
@@ -170,18 +138,12 @@ $query = mysqli_query($objCon, $sql);
                 },
                 success: function (data) {
                     $("#list-data").html(data);
+                    console.log("search");
                 }
             });
         });
-        $("#searchform").on("keyup keypress", function (e) {
-            var code = e.keycode || e.which;
-            if (code == 13) {
-                $("#btnSearch").click();
-                return false;
-            }
-        });
-
     });
+
     function voteRecipe(data) {
         $.ajax({
             url: "./src/service/recipe/voteService.php",
@@ -192,14 +154,10 @@ $query = mysqli_query($objCon, $sql);
                 uid: <?php echo $_SESSION['uid'] ?>
             },
             success: function (data) {
-                $("#voteBox").load(location.href + " #voteBox");
+                $("#data-vote").load(location.href + " #data-vote");
             }
         });
     }
-
-    document.getElementById("btnCreateRecipe").onclick = function () {
-        location.href = "create_recipe.php";
-    };
 </script>
 </body>
 </html>

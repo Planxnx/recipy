@@ -71,7 +71,7 @@
         </table>
         <div class="registrationFormAlert" id="divCheckPasswordMatch">
         </div>
-        <input type="submit" name="Submit" value="submit" id="btnSignUp"> &nbsp; or <a href="signIn.php">&nbsp;Sign
+        <input type="submit" name="Submit" value="submit" id="btnSignUp"> &nbsp; or <a href="sign_in.php">&nbsp;Sign
             In</a>
     </form>
     <script type="text/javascript">

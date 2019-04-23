@@ -1,8 +1,12 @@
 <?php
 session_start();
-include 'config.php';
-$sql = "SELECT * FROM recipe ORDER BY RAND() ";
-$query = mysqli_query($objCon, $sql);
+session_start();
+if (!isset($_SESSION["uid"])) {
+    $URL = "signIn.php";
+    echo "<script type='text/javascript'> alert('Please SignIn to Create new Recipe') </script>";
+    echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+    echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+}
 ?>
 
 <!DOCTYPE html>

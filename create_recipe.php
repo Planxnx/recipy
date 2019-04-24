@@ -18,8 +18,8 @@ if (!isset($_SESSION["uid"])) {
     <title>Recipy</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./src/css/default.css">
+    <link rel="stylesheet" href="./src/css/index.css">
     <link rel="stylesheet" href="./src/css/create_recipe.css">
-
 </head>
 
 <body>
@@ -66,11 +66,14 @@ if (!isset($_SESSION["uid"])) {
     </div>
 </div>
 <div id="content">
-    <div class="form-box shadow">
+    <div id="list-data">
+    </div>
+    <div id="create-data" class="form-box shadow">
         <div class="form-header">
             <span>Create new recipe</span>
         </div>
-        <form id="form1" enctype="multipart/form-data" method="POST" action="./src/service/recipe/create_recipe_service.php">
+        <form id="form1" enctype="multipart/form-data" method="POST"
+              action="./src/service/recipe/create_recipe_service.php">
             <label for="txtname">Recipe Name</label><br>
             <input name="txtname" type="text" id="txtname" required><br>
             <label for="recipeImg">Food Image</label>
@@ -116,6 +119,31 @@ if (!isset($_SESSION["uid"])) {
     </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    $(function () {
+        $("#btnSearch").click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            $.ajax({
+                url: "./src/service/search/search.php",
+                type: "post",
+                data: {searchText: $("#searchText").val()},
+                beforeSend: function () {
+                    $("#create-data").show();
+                    $("#list-data").hide();
+                },
+                complete: function () {
+                    $("#create-data").hide();
+                    $("#list-data").show();
+                },
+                success: function (data) {
+                    $("#list-data").html(data);
+                    console.log("search");
+                }
+            });
+        });
+    });
+</script>
 </body>
 
 </html>

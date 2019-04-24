@@ -69,7 +69,7 @@ $query = mysqli_query($objCon, $sql);
             if ($resultRecipe = mysqli_fetch_assoc($query)) {
             ?>
             <img class="shadow" src="./src/service/recipe/images/<?php echo $resultRecipe['recipeImg']; ?>">
-            <span class="data-detail"><?php echo $resultRecipe['name']; ?>ู</span> <br>
+            <span class="data-detail"><?php echo $resultRecipe['name']; ?></span> <br>
             <span class="data-detail"><?php echo $resultRecipe['category']; ?></span> <br>
             <span class="data-detail"><?php echo $resultRecipe['created_by']; ?></span><br>
             <p>

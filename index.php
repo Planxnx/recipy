@@ -85,7 +85,7 @@ $query = mysqli_query($objCon, $sql);
                 </div>
                 <div class="featured-body">
                         <span>
-                            ✔ Intelligent Search <br>
+                            ✔ <u>Intelligent Search</u>  <br>
                             หากคุณมีส่วนผสมในตู้เย็น แต่ไม่รู้จะทำเมนูอะไรทานดี ลองใช้ <span
                                     style="color: #EE801E">Intelligent Search</span> ดูสิ <br>
                             ช่องค้นหาเพียงช่องเดียวที่สามารถใส่คำค้นหาได้ทั้ง ชื่อสูตร , ส่วนผสม หรือ วิธีการทำ
@@ -98,9 +98,9 @@ $query = mysqli_query($objCon, $sql);
                 </div>
                 <div class="featured-body">
                         <span>
-                            ✔ Community Vote <br>
+                            ✔ <u>Vote Ranking</u>  <br>
                             สูตรอาหารนี้คุณทำแล้วถูกใจคุณหรือป่าว ? <br>
-                            แบ่งปันความรู้สึกของคุณต่อสูตรอาหารด้วยการโหวตกัน
+                            แบ่งปันความรู้สึกของคุณต่อสูตรอาหารด้วยการโหวต แล้วนำมาจัดอันดับคะแนนกัน !
                         </span>
                 </div>
                 <div class="featured-footer">

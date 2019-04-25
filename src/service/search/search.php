@@ -13,8 +13,8 @@ foreach ($fullResult as $value) { ?>
             <div class="crop">
                 <img src="./src/service/recipe/images/<?php echo $value['recipeImg']; ?>">
             </div>
-            <span class="data-detail"><?php echo $value['name']; ?></span> <br>
-            <span class="data-detail"><?php echo $value['category']; ?></span>
+            <span style="font-weight: 500;" class="data-detail"><?php echo $value['name']; ?></span> <br>
+            <span style="font-size: 13px;" class="data-detail"><?php echo $value['category']; ?></span>
         </a>
     </div>
     <?php $i++;
@@ -36,8 +36,8 @@ if ($fullSimilarResult) {
                 <img src="./src/service/recipe/images/<?php echo $value['recipeImg']; ?>">
             </div>
             <a href="recipe.php?recipeId=<?php echo $value['recipeId'] ?>">
-                <span class="data-detail"><?php echo $value['name']; ?></span> <br>
-                <span class="data-detail"><?php echo $value['category']; ?></span>
+                <span style="font-weight: 500;" class="data-detail"><?php echo $value['name']; ?></span> <br>
+                <span style="font-size: 13px;" class="data-detail"><?php echo $value['category']; ?></span>
             </a>
         </div>
         <?php $i++;

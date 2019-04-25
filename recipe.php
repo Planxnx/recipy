@@ -45,6 +45,7 @@ $query = mysqli_query($objCon, $sql);
                 ?>
             </div>
             <button class="shadow" onclick="window.location.href = './create_recipe.php';">Create new Recipe</button>
+            <button class="shadow" onclick="window.location.href = './ranking.php';">Vote Ranking</button>
         </div>
         <div class="search-container">
             <form id="searchform">
@@ -80,6 +81,8 @@ $query = mysqli_query($objCon, $sql);
                 $sql = "SELECT * FROM recipe_vote WHERE recipeId = '" . $_GET['recipeId'] . "' AND voteType = 'like';";
                 $query = mysqli_query($objCon, $sql);
                 $likeCount = mysqli_num_rows($query);
+                $updateSql = "UPDATE recipe SET vote_score = " . $likeCount . " WHERE recipeId = '" . $_GET['recipeId'] . "' ";
+                $query = mysqli_query($objCon, $updateSql);
                 $sql = "SELECT * FROM recipe_vote WHERE recipeId = '" . $_GET['recipeId'] . "' AND voteType = 'dislike';";
                 $query = mysqli_query($objCon, $sql);
                 $dislikeCount = mysqli_num_rows($query);

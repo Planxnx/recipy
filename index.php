@@ -7,14 +7,19 @@ $query = mysqli_query($objCon, $sql);
 <!DOCTYPE html>
 
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/ico" href="src/img/icon.png"/>
     <title>Recipy</title>
+    <script src="https://cdn.jsdelivr.net/npm/mobile-detect@1.4.3/mobile-detect.min.js"></script>
+    <script src="./src/js/display_check.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./src/css/default.css">
     <link rel="stylesheet" href="./src/css/index.css">
+    <script src="https://cdn.jsdelivr.net/npm/mobile-detect@1.4.3/mobile-detect.min.js"></script>
+    <script src="./src/js/display_check.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 </head>
 
@@ -43,7 +48,11 @@ $query = mysqli_query($objCon, $sql);
                 }
                 ?>
             </div>
-            <button class="shadow" onclick="window.location.href = './create_recipe.php';">Create new Recipe</button>
+            <button class="shadow" onclick="window.location.href = './create_recipe.php';">Create new
+                Recipe
+            </button>
+            <button class="shadow" onclick="window.location.href = './ranking.php';">Vote Ranking</button>
+
         </div>
         <div class="search-container">
             <form id="searchform">
@@ -53,9 +62,9 @@ $query = mysqli_query($objCon, $sql);
                 <div class="tooltip tooltip-icon">
                     <i class="fa fa-info-circle" aria-hidden="true"></i>
                     <span class="tooltiptext tooltip-right " style="width: 800%;">
-                        try Intelligent Search <br>
-                        Ex. Ingredient / Recipe Name / How to
-                    </span>
+                            try Intelligent Search <br>
+                            Ex. Ingredient / Recipe Name / How to
+                        </span>
                 </div>
             </form>
         </div>
@@ -123,8 +132,8 @@ $query = mysqli_query($objCon, $sql);
                     <div class="crop">
                         <img src="./src/service/recipe/images/<?php echo $value['recipeImg']; ?>">
                     </div>
-                    <span class="data-detail"><?php echo $value['name']; ?></span> <br>
-                    <span class="data-detail"><?php echo $value['category']; ?></span>
+                    <span style="font-weight: 500;" class="data-detail"><?php echo $value['name']; ?></span> <br>
+                    <span style="font-size: 12px;" class="data-detail"><?php echo $value['category']; ?></span>
                 </a>
             </div>
             <?php $i++;
@@ -156,7 +165,9 @@ $query = mysqli_query($objCon, $sql);
             $.ajax({
                 url: "./src/service/search/search.php",
                 type: "post",
-                data: {searchText: $("#searchText").val()},
+                data: {
+                    searchText: $("#searchText").val()
+                },
                 beforeSend: function () {
                     $(".loading").show();
                     $("#list-data").hide();

@@ -48,6 +48,7 @@ if (!isset($_SESSION["uid"])) {
                 ?>
             </div>
             <button class="shadow" onclick="window.location.href = './create_recipe.php';">Create new Recipe</button>
+            <button class="shadow" onclick="window.location.href = './ranking.php';">Vote Ranking</button>
         </div>
         <div class="search-container">
             <form id="searchform">

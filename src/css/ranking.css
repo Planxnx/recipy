@@ -1,0 +1,75 @@
+#content {
+    margin: 60px;
+    margin-top: 140px;
+    margin-bottom: 140px;
+}
+
+#content .rank-container{
+    background-color: #F7F9F9;
+    display: block;
+    margin: auto;
+    width: 50%;
+    height: 100%;
+}
+
+#content .list-header {
+    font-size: 24px;
+    font-weight: 500;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    text-align: center
+}
+
+.box-vote-header{
+    margin-bottom: 1%;
+    display: flex;
+    justify-content: center;
+}
+.box-vote-header .vote-number{
+    text-align: center;
+    width: 15%;
+    background: #F0F0F0;
+}
+.box-vote-header .vote-name{
+    text-align: center;
+    width: 60%;
+    background: #F0F0F0
+}
+.box-vote-header .vote-score{
+    text-align: center;
+    width: 25%;
+    background: #F0F0F0
+}
+
+a{
+    color: black;
+}
+
+.box-vote{
+    background: #E0E0E0;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1%;
+    -webkit-transition: background 0.2s ease-in-out;
+    transition: background 0.2s ease-in-out;
+    -webkit-transition: font-size 0.2s ease-in-out;
+    transition: font-size 0.2s ease-in-out;
+}
+.box-vote:hover{
+    color: #F0F0F0;
+    background: #D69764;
+    font-size: 22px;
+}
+.box-vote .vote-number{
+    text-align: center;
+    width: 15%;
+    border: none;
+}
+.box-vote .vote-name{
+    text-align: center;
+    width: 60%;
+}
+.box-vote .vote-score{
+    text-align: center;
+    width: 25%;
+}

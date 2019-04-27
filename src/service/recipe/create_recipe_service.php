@@ -9,15 +9,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $_POST["txtname"] = mysqli_real_escape_string($objCon, $_POST["txtname"]);
     $_POST["txtdescription"] = mysqli_real_escape_string($objCon, $_POST["txtdescription"]);
     $_POST["txthowTo"] = mysqli_real_escape_string($objCon, $_POST["txthowTo"]);
-    $txtingredient = $_POST['txtingredient'];
-    $txtamount = $_POST['txtamount'];
+
 
     $name = checkInput($_POST["txtname"]);
     $description = checkInput($_POST["txtdescription"]);
     $category = checkInput($_POST["ddlcategory"]);
-    $ingredient = checkInput($_POST["txtingredient"]);
     $howTo = checkInput($_POST["txthowTo"]);
     $upload_image = new upload($_FILES['recipeImg']);
+    $txtingredient = $_POST['txtingredient'];
+    $txtamount = $_POST['txtamount'];
     if ($upload_image->uploaded) {
         $upload_image->image_resize = true;
         $upload_image->image_ratio_crop = true;
@@ -36,9 +36,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $strSQL = "INSERT INTO recipe_ingredient (recipeId,name,amount) VALUES ('" . $recipeId . "','" . $value . "','" . $txtamount[$key] . "')";
                 $objQuery = mysqli_query($objCon, $strSQL);
             }
-            header("location:../../../recipe.php?recipeId=" . $recipeId);
-            mysqli_close($objCon);
-            exit();
+            if ($recipeId) {
+                header("location:../../../recipe.php?recipeId=" . $recipeId);
+                mysqli_close($objCon);
+                exit();
+            } else {
+                $URL = "../../../index.php";
+                mysqli_close($objCon);
+                echo "<script type='text/javascript'>alert('Fail to Create Recipe');</script>";
+                echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+                echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+            }
+
         } else {
             echo "upload image fail";
             exit();

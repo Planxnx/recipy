@@ -83,7 +83,7 @@ if (!isset($_SESSION["uid"])) {
             <div class="tooltip" style="font-size: 17px;">
                 <i class="fa fa-info-circle" aria-hidden="true"></i>
                 <span class="tooltiptext tooltip-right " style="width: 1600%;">
-                        Image size limit: less than 2 Mb
+                        Image size limit: less than 2 Mb   and Landscape Recommend
                     </span>
             </div>
             <br>

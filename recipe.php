@@ -97,10 +97,12 @@ $query = mysqli_query($objCon, $sql);
                     }
                 }
                 ?>
-                <button <?php if (empty($enableVote)) echo "disabled" ?> type="button" onclick="voteRecipe('like')" class="shadow">
+                <button <?php if (empty($enableVote)) echo "disabled" ?> type="button" onclick="voteRecipe('like')"
+                                                                         class="shadow">
                     <span>LIKE :  <?php echo $likeCount; ?></span>
                 </button>
-                <button <?php if (empty($enableVote)) echo "disabled" ?> type="button" onclick="voteRecipe('dislike')" class="shadow">
+                <button <?php if (empty($enableVote)) echo "disabled" ?> type="button" onclick="voteRecipe('dislike')"
+                                                                         class="shadow">
                     <span>DISLIKE : <?php echo $dislikeCount; ?></span>
                 </button>
             </div>
@@ -108,9 +110,28 @@ $query = mysqli_query($objCon, $sql);
         <div class="column-detail shadow">
             <div class="data-ingredient">
                 <span class="data-header">Ingredient</span>
-                <p>
-                    <?php echo nl2br($resultRecipe['ingredient']); ?>
-                </p>
+                <div class="list-ingredient">
+                    <div class="ingredient-header">
+                        <div class="ingredient-number"> </div>
+                        <div class="ingredient-left">Name</div>
+                        <div class="ingredient-right">Amount</div>
+                    </div>
+                    <?php
+                    $sql = "SELECT * FROM recipe_ingredient WHERE recipeId =" . $_GET['recipeId'];
+                    $query = mysqli_query($objCon, $sql);
+                    $i = 1;
+                    while ($resultIngredient = mysqli_fetch_assoc($query)) {
+                        ?>
+                        <div class="ingredient-item">
+                            <div class="ingredient-number"><span><?php echo $i; ?></span></div>
+                            <div class="ingredient-left"><?php echo $resultIngredient['name']; ?></div>
+                            <div class="ingredient-right"><?php echo $resultIngredient['amount']; ?></div>
+                        </div>
+                        <?php
+                        $i++ ;
+                    }
+                    ?>
+                </div>
             </div>
             <div class="data-how">
                 <span class="data-header">How to</span>
@@ -125,7 +146,7 @@ $query = mysqli_query($objCon, $sql);
     </div>
 </div>
 <script>
-    $('#searchform').on('submit',function (e) {
+    $('#searchform').on('submit', function (e) {
         e.preventDefault();
         e.stopPropagation();
         $.ajax({
@@ -146,6 +167,7 @@ $query = mysqli_query($objCon, $sql);
             }
         });
     });
+
     function voteRecipe(data) {
         $.ajax({
             url: "./src/service/recipe/voteService.php",

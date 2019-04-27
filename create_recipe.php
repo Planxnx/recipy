@@ -20,6 +20,8 @@ if (!isset($_SESSION["uid"])) {
     <link rel="stylesheet" href="./src/css/default.css">
     <link rel="stylesheet" href="./src/css/index.css">
     <link rel="stylesheet" href="./src/css/create_recipe.css">
+    <script src="https://cdn.jsdelivr.net/npm/mobile-detect@1.4.3/mobile-detect.min.js"></script>
+    <script src="./src/js/display_check.js"></script>
 </head>
 
 <body>
@@ -101,11 +103,20 @@ if (!isset($_SESSION["uid"])) {
             <div class="tooltip" style="font-size: 17px;">
                 <i class="fa fa-info-circle" aria-hidden="true"></i>
                 <span class="tooltiptext tooltip-right " style="width: 1600%;">
-                        Line Break: Shift + Enter
+                        Click button for add new input box ( maximum 16 fields allowed)
                     </span>
             </div>
             <br>
-            <textarea required name="txtingredient" id="txtingredient" cols="30" rows="10"></textarea><br>
+            <!--            <textarea required name="txtingredient" id="txtingredient" cols="30" rows="10"></textarea><br>-->
+            <div class="input_fields_wrap">
+                <input required type="text" name="txtingredient[]" placeholder="name Ex. Chicken ">
+                <input required type="text" name="txtamount[]" placeholder="amount Ex. 2.1 Kg ">
+                <input required type="text" name="txtingredient[]" placeholder="name Ex. Sugar ">
+                <input required type="text" name="txtamount[]" placeholder="amount Ex. 2 tsp ">
+            </div>
+            <button type="button" id="addField" class="addField shadow" style="float: left;font-size: 13px;padding:0;margin-top: 1%;">  add more Ingredient 
+            </button>
+            <br>
             <label for="txthowTo">How to</label>
             <div class="tooltip" style="font-size: 17px;">
                 <i class="fa fa-info-circle" aria-hidden="true"></i>
@@ -115,31 +126,48 @@ if (!isset($_SESSION["uid"])) {
             </div>
             <br>
             <textarea required name="txthowTo" id="txthowTo" cols="30" rows="10"></textarea><br>
-            <button type="submit">Create</button>
+            <button id="submitForm" class="shadow" type="submit">Create</button>
         </form>
     </div>
 </div>
 <script src="./src/js/jquery-3.4.0.min.js"></script>
 <script>
-    $('#searchform').on('submit', function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-        $.ajax({
-            url: "./src/service/search/search.php",
-            type: "post",
-            data: {searchText: $("#searchText").val()},
-            beforeSend: function () {
-                $("#list-data").hide();
-            },
-            complete: function () {
-                $("#create-data").hide();
-                $("#list-data").show();
-            },
-            success: function (data) {
-                $("#list-data").html(data);
-                console.log("search");
+    var max_fields = 14;
+    var x = 0;
+    $(document).ready(function () {
+        $('#searchform').on('submit', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            $.ajax({
+                url: "./src/service/search/search.php",
+                type: "post",
+                data: {searchText: $("#searchText").val()},
+                beforeSend: function () {
+                    $("#list-data").hide();
+                },
+                complete: function () {
+                    $("#create-data").hide();
+                    $("#list-data").show();
+                },
+                success: function (data) {
+                    $("#list-data").html(data);
+                    console.log("search");
+                }
+            });
+        });
+
+        $("#addField").on("click", function (e) {
+            e.preventDefault();
+            if (x < max_fields) {
+                x++;
+                $(".input_fields_wrap").append('<div><input required type="text" name="txtingredient[]" placeholder="name"> <input required type="text" name="txtamount[]" placeholder="amount"> <a href="#" class="remove_field">&#10006;</a></div>');
             }
         });
+        $(".input_fields_wrap").on("click", ".remove_field", function (e) {
+            e.preventDefault();
+            $(this).parent('div').remove();
+            x--;
+        })
     });
 </script>
 </body>

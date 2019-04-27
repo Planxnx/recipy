@@ -8,8 +8,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $_POST["txtname"] = mysqli_real_escape_string($objCon, $_POST["txtname"]);
     $_POST["txtdescription"] = mysqli_real_escape_string($objCon, $_POST["txtdescription"]);
-    $_POST["txtingredient"] = mysqli_real_escape_string($objCon, $_POST["txtingredient"]);
     $_POST["txthowTo"] = mysqli_real_escape_string($objCon, $_POST["txthowTo"]);
+    $txtingredient = $_POST['txtingredient'];
+    $txtamount = $_POST['txtamount'];
 
     $name = checkInput($_POST["txtname"]);
     $description = checkInput($_POST["txtdescription"]);
@@ -28,9 +29,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (true) {
             $image_name = $upload_image->file_dst_name;
             $upload_image->clean();
-            $strSQL = "INSERT INTO recipe(uid,name,description,category,ingredient,howTo,created_by,recipeImg) VALUES ('" . $_SESSION["uid"] . "','" . $name . "','" . $description . "','" . $category . "','" . $ingredient . "','" . $howTo . "','" . $_SESSION["name"] . "','" . $image_name . "')";
+            $strSQL = "INSERT INTO recipe(uid,name,description,category,howTo,created_by,recipeImg) VALUES ('" . $_SESSION["uid"] . "','" . $name . "','" . $description . "','" . $category . "','" . $howTo . "','" . $_SESSION["name"] . "','" . $image_name . "')";
             $objQuery = mysqli_query($objCon, $strSQL);
-            header("location:../../../recipe.php?recipeId=" . mysqli_insert_id($objCon));
+            $recipeId = mysqli_insert_id($objCon);
+            foreach ($txtingredient as $key => $value) {
+                $strSQL = "INSERT INTO recipe_ingredient (recipeId,name,amount) VALUES ('" . $recipeId . "','" . $value . "','" . $txtamount[$key] . "')";
+                $objQuery = mysqli_query($objCon, $strSQL);
+            }
+            header("location:../../../recipe.php?recipeId=" . $recipeId);
             mysqli_close($objCon);
             exit();
         } else {

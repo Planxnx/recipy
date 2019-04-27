@@ -223,4 +223,9 @@ hr {
     color: #EE801E;
 }
 
+button:hover {
+    background: #D69764;
+    color: #F1EDEA;
+    box-shadow: 0 4px 7px rgba(0, 0, 0, 0.2), 0 4px 7px rgba(0, 0, 0, 0.2);
+}
 

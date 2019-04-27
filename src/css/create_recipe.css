@@ -57,3 +57,16 @@
     width: 100%;
     resize: none;
 }
+
+
+#form1 #addField {
+    background: #EE801E;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    color: #F7F9F9;
+    padding: 2%;
+    padding-left: 4%;
+    padding-right: 4%;
+    float: left;
+}

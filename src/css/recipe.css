@@ -41,7 +41,7 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 60%;
+    height: 100%;
     margin-bottom: 5%;
 }
 
@@ -83,11 +83,6 @@ button[disabled]:hover {
     height: 20px;
 }
 
-.data-ingredient p {
-    margin-left: 10%;
-    margin-right: 10%;
-    text-align: justify;
-}
 
 .data-how p {
     margin-left: 10%;
@@ -102,3 +97,73 @@ button[disabled]:hover {
 .data-header {
     margin-left: 6%;
 }
+
+.list-ingredient {
+    margin-left: 10%;
+    margin-right: 10%;
+    text-align: justify;
+    width: 70%;
+    display: block;
+}
+
+.ingredient-header {
+    margin-top: 1%;
+    margin-bottom: 1%;
+    background: #F5F5F5;
+    border: none;
+    font-size: 15px;
+    display: flex;
+}
+
+.ingredient-header .ingredient-number {
+    width: 15%;
+    text-align: center;
+}
+
+.ingredient-header .ingredient-left {
+    width: 60%;
+    text-align: center;
+}
+
+.ingredient-header .ingredient-right {
+    width: 25%;
+    alignment: right;
+    text-align: center;
+}
+
+.ingredient-item {
+    margin-top: 1%;
+    margin-bottom: 1%;
+    background-color: #E0E0E0;
+    border: none;
+    font-size: 15px;
+    display: flex;
+    -webkit-transition: background 0.2s ease-in-out;
+    transition: background 0.2s ease-in-out;
+    -webkit-transition: font-size 0.2s ease-in-out;
+    transition: font-size 0.2s ease-in-out;
+}
+
+.ingredient-item:hover {
+    font-size: 22px;
+    color: #F0F0F0;
+    background: #D69764;
+}
+
+.ingredient-item .ingredient-number {
+    width: 15%;
+    text-align: center;
+}
+
+.ingredient-item .ingredient-left {
+    width: 60%;
+    text-align: center;
+}
+
+.ingredient-item .ingredient-right {
+    width: 25%;
+    alignment: right;
+    text-align: center;
+}
+
+

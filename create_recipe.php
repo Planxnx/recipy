@@ -119,29 +119,26 @@ if (!isset($_SESSION["uid"])) {
         </form>
     </div>
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="./src/js/jquery-3.4.0.min.js"></script>
 <script>
-    $(function () {
-        $("#btnSearch").click(function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-            $.ajax({
-                url: "./src/service/search/search.php",
-                type: "post",
-                data: {searchText: $("#searchText").val()},
-                beforeSend: function () {
-                    $("#create-data").show();
-                    $("#list-data").hide();
-                },
-                complete: function () {
-                    $("#create-data").hide();
-                    $("#list-data").show();
-                },
-                success: function (data) {
-                    $("#list-data").html(data);
-                    console.log("search");
-                }
-            });
+    $('#searchform').on('submit', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        $.ajax({
+            url: "./src/service/search/search.php",
+            type: "post",
+            data: {searchText: $("#searchText").val()},
+            beforeSend: function () {
+                $("#list-data").hide();
+            },
+            complete: function () {
+                $("#create-data").hide();
+                $("#list-data").show();
+            },
+            success: function (data) {
+                $("#list-data").html(data);
+                console.log("search");
+            }
         });
     });
 </script>

@@ -20,9 +20,9 @@ $query = mysqli_query($objCon, $sql);
     <link rel="stylesheet" href="./src/css/index.css">
     <script src="https://cdn.jsdelivr.net/npm/mobile-detect@1.4.3/mobile-detect.min.js"></script>
     <script src="./src/js/display_check.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>-->
+    <script src="./src/js/jquery-3.4.0.min.js"></script>
 </head>
-
 <body>
 <div class="topNav shadow">
     <div class="homeButton">
@@ -158,29 +158,25 @@ $query = mysqli_query($objCon, $sql);
     <?php
     }
     ?>
-    $(function () {
-        $("#btnSearch").click(function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-            $.ajax({
-                url: "./src/service/search/search.php",
-                type: "post",
-                data: {
-                    searchText: $("#searchText").val()
-                },
-                beforeSend: function () {
-                    $(".loading").show();
-                    $("#list-data").hide();
-                },
-                complete: function () {
-                    $(".loading").hide();
-                    $("#list-data").show();
-                },
-                success: function (data) {
-                    $("#list-data").html(data);
-                    console.log("search");
-                }
-            });
+    $('#searchform').on('submit', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        $.ajax({
+            url: "./src/service/search/search.php",
+            type: "post",
+            data: {searchText: $("#searchText").val()},
+            beforeSend: function () {
+                $(".loading").show();
+                $("#list-data").hide();
+            },
+            complete: function () {
+                $(".loading").hide();
+                $("#list-data").show();
+            },
+            success: function (data) {
+                $("#list-data").html(data);
+                console.log("search");
+            }
         });
     });
 </script>

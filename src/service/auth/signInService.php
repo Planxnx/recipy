@@ -15,9 +15,16 @@ if (!$objResult) {
     $_SESSION["uid"] = $objResult["uid"];
     $_SESSION["name"] = $objResult["name"];
     session_write_close();
-    $URL = "index.php";
-    echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
-    echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+    if (isset($_SESSION['currentRecipePage'])){
+        $URL = "recipe.php?recipeId=".$_SESSION['currentRecipePage'];
+        echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+        echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+    }
+    else{
+        $URL = "index.php";
+        echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+        echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+    }
 }
 mysqli_close($objCon);
 ?>

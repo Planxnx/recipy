@@ -2,10 +2,11 @@
 session_start();
 if (!isset($_SESSION["uid"])) {
     $URL = "sign_in.php";
-    echo "<script type='text/javascript'> alert('Please SignIn to Create new Recipe') </script>";
+    echo "<script type='text/javascript'> alert('Please Sign In to Create new Recipe') </script>";
     echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
     echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 }
+
 ?>
 
 <!DOCTYPE html>

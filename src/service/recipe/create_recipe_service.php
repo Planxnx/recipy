@@ -10,7 +10,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $_POST["txtdescription"] = mysqli_real_escape_string($objCon, $_POST["txtdescription"]);
     $_POST["txthowTo"] = mysqli_real_escape_string($objCon, $_POST["txthowTo"]);
 
-
     $name = checkInput($_POST["txtname"]);
     $description = checkInput($_POST["txtdescription"]);
     $category = checkInput($_POST["ddlcategory"]);

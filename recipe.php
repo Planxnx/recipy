@@ -3,7 +3,8 @@ session_start();
 include 'config.php';
 $sql = "SELECT * FROM recipe WHERE recipeId =" . $_GET['recipeId'];
 $query = mysqli_query($objCon, $sql);
-$resultRecipe = mysqli_fetch_assoc($query)
+$resultRecipe = mysqli_fetch_assoc($query);
+$_SESSION['currentRecipePage'] = $_GET['recipeId'];
 ?>
 
 <!DOCTYPE html>
@@ -210,21 +211,6 @@ $resultRecipe = mysqli_fetch_assoc($query)
         });
     });
 
-    function voteRecipe(data) {
-        $.ajax({
-            url: "./src/service/recipe/voteService.php",
-            type: "POST",
-            data: {
-                voteType: data,
-                recipeId: <?php echo $_GET['recipeId'] ?>,
-                uid: <?php echo $_SESSION['uid'] ?>
-            },
-            success: function (data) {
-                $("#data-vote").load(location.href + " #data-vote");
-            }
-        });
-    }
-
     function addComment() {
         console.log("comment")
         $.ajax({
@@ -232,13 +218,14 @@ $resultRecipe = mysqli_fetch_assoc($query)
             type: "POST",
             data: {
                 txtComment: $("#txtComment").val(),
-                recipeId: <?php echo $_GET['recipeId'] ?>,
-                uid: <?php echo $_SESSION['uid'] ?>,
-                name: "<?php echo $_SESSION["name"] ?>"
+                recipeId: <?php echo $_GET['recipeId'] ?>
             },
             success: function (data) {
                 if (data == 101) {
                     alert("Maximum comment words is 155 characters")
+                }else if (data == 102) {
+                    alert('Please Sign In to Comment!')
+                    document.location.href='sign_in.php';
                 } else if (data == 400) {
                     alert("Fail to Comment")
                     console.log("status:400")
@@ -249,6 +236,22 @@ $resultRecipe = mysqli_fetch_assoc($query)
             }
         });
     }
+
+    function voteRecipe(data) {
+        $.ajax({
+            url: "./src/service/recipe/voteService.php",
+            type: "POST",
+            data: {
+                voteType: data,
+                recipeId: <?php echo $_GET['recipeId'] ?>,
+            },
+            success: function (data) {
+                $("#data-vote").load(location.href + " #data-vote");
+            }
+        });
+    }
+
+
 </script>
 </body>
 </html>

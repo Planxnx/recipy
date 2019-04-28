@@ -15,7 +15,7 @@ if (!isset($_SESSION["uid"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/ico" href="src/img/icon.png"/>
-    <title>Recipy</title>
+    <title>Recipy: Create Recipe</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./src/css/default.css">
     <link rel="stylesheet" href="./src/css/index.css">
@@ -103,16 +103,16 @@ if (!isset($_SESSION["uid"])) {
             <div class="tooltip" style="font-size: 17px;">
                 <i class="fa fa-info-circle" aria-hidden="true"></i>
                 <span class="tooltiptext tooltip-right " style="width: 1600%;">
-                        Click button for add new input box ( maximum 16 fields allowed)
+                        Click button for add new input box ( maximum 20 fields allowed)
                     </span>
             </div>
             <br>
             <!--            <textarea required name="txtingredient" id="txtingredient" cols="30" rows="10"></textarea><br>-->
             <div class="input_fields_wrap">
-                <input required type="text" name="txtingredient[]" placeholder="name Ex. Chicken ">
-                <input required type="text" name="txtamount[]" placeholder="amount Ex. 2.1 Kg ">
-                <input required type="text" name="txtingredient[]" placeholder="name Ex. Sugar ">
-                <input required type="text" name="txtamount[]" placeholder="amount Ex. 2 tsp ">
+                <input required type="text" name="txtingredient[]" placeholder="Name Ex.' อกไก่ ' ">
+                <input required type="text" name="txtamount[]" placeholder="Amount Ex.' 2.1 กิโลกรัม '">
+                <input required type="text" name="txtingredient[]" placeholder="Name Ex.' น้ำตาลทราย ' ">
+                <input required type="text" name="txtamount[]" placeholder="Amount Ex.' 2 ช้อนชา ' ">
             </div>
             <button type="button" id="addField" class="addField shadow" style="float: left;font-size: 13px;padding:0;margin-top: 1%;">  add more Ingredient 
             </button>
@@ -132,7 +132,7 @@ if (!isset($_SESSION["uid"])) {
 </div>
 <script src="./src/js/jquery-3.4.0.min.js"></script>
 <script>
-    var max_fields = 14;
+    var max_fields = 18;
     var x = 0;
     $(document).ready(function () {
         $('#searchform').on('submit', function (e) {
@@ -160,7 +160,7 @@ if (!isset($_SESSION["uid"])) {
             e.preventDefault();
             if (x < max_fields) {
                 x++;
-                $(".input_fields_wrap").append('<div><input required type="text" name="txtingredient[]" placeholder="name"> <input required type="text" name="txtamount[]" placeholder="amount"> <a href="#" class="remove_field">&#10006;</a></div>');
+                $(".input_fields_wrap").append('<div><input required type="text" name="txtingredient[]" placeholder="Name"> <input required type="text" name="txtamount[]" placeholder="Amount"> <a href="#" class="remove_field">&#10006;</a></div>');
             }
         });
         $(".input_fields_wrap").on("click", ".remove_field", function (e) {

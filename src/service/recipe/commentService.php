@@ -6,7 +6,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo 102;
         exit();
     }
-    if (strlen($_POST['recipeId']) < 155) {
+    if (strlen($_POST['txtComment']) < 155 && strlen($_POST['txtComment']) > 1) {
+        date_default_timezone_set('Asia/Bangkok');
         $timestamp = time();
         $date = date("F d, Y h:i:s A", $timestamp);
         $strSQL = "INSERT INTO recipe_comment(uid,recipeId,comment,comment_date,name) VALUES ('" . $_SESSION['uid'] . "','" . $_POST["recipeId"] . "','" . $_POST["txtComment"] . "','" . $date . "','" . $_SESSION['name'] . "')";

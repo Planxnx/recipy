@@ -222,7 +222,7 @@ $_SESSION['currentRecipePage'] = $_GET['recipeId'];
             },
             success: function (data) {
                 if (data == 101) {
-                    alert("Maximum comment words is 155 characters")
+                    alert("Comment Length: 1 - 155 characters")
                 }else if (data == 102) {
                     alert('Please Sign In to Comment!')
                     document.location.href='sign_in.php';

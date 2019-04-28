@@ -3,6 +3,7 @@ session_start();
 include 'config.php';
 $sql = "SELECT * FROM recipe WHERE recipeId =" . $_GET['recipeId'];
 $query = mysqli_query($objCon, $sql);
+$resultRecipe = mysqli_fetch_assoc($query)
 ?>
 
 <!DOCTYPE html>
@@ -12,7 +13,7 @@ $query = mysqli_query($objCon, $sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/ico" href="src/img/icon.png"/>
-    <title>Recipy</title>
+    <title>Recipy: <?php echo $resultRecipe['name']; ?></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./src/css/default.css">
     <link rel="stylesheet" href="./src/css/index.css">
@@ -69,7 +70,7 @@ $query = mysqli_query($objCon, $sql);
     <div id="list-data">
         <div class="column-info">
             <?php
-            if ($resultRecipe = mysqli_fetch_assoc($query)) {
+            if ($resultRecipe) {
             ?>
             <img class="shadow" src="./src/service/recipe/images/<?php echo $resultRecipe['recipeImg']; ?>">
             <span class="data-detail"><?php echo $resultRecipe['name']; ?></span> <br>

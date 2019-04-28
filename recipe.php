@@ -19,7 +19,6 @@ $resultRecipe = mysqli_fetch_assoc($query)
     <link rel="stylesheet" href="./src/css/index.css">
     <link rel="stylesheet" href="./src/css/recipe.css">
     <script src="./src/js/jquery-3.4.0.min.js"></script>
-    <script src="./src/js/search.js"></script>
 </head>
 
 <body>
@@ -75,7 +74,7 @@ $resultRecipe = mysqli_fetch_assoc($query)
             <img class="shadow" src="./src/service/recipe/images/<?php echo $resultRecipe['recipeImg']; ?>">
             <span class="data-detail"><?php echo $resultRecipe['name']; ?></span> <br>
             <span class="data-detail"><?php echo $resultRecipe['category']; ?></span> <br>
-            <span class="data-detail"><?php echo $resultRecipe['created_by']; ?></span><br>
+            <span class="data-detail">by <?php echo $resultRecipe['created_by']; ?></span><br>
             <p>
                 <?php echo nl2br($resultRecipe['description']); ?>
             </p>
@@ -108,37 +107,79 @@ $resultRecipe = mysqli_fetch_assoc($query)
                 </button>
             </div>
         </div>
-        <div class="column-detail shadow">
-            <div class="data-ingredient">
-                <span class="data-header">Ingredient</span>
-                <div class="list-ingredient">
-                    <div class="ingredient-header">
-                        <div class="ingredient-number"> </div>
-                        <div class="ingredient-left">Name</div>
-                        <div class="ingredient-right">Amount</div>
-                    </div>
-                    <?php
-                    $sql = "SELECT * FROM recipe_ingredient WHERE recipeId =" . $_GET['recipeId'];
-                    $query = mysqli_query($objCon, $sql);
-                    $i = 1;
-                    while ($resultIngredient = mysqli_fetch_assoc($query)) {
-                        ?>
-                        <div class="ingredient-item">
-                            <div class="ingredient-number"><span><?php echo $i; ?></span></div>
-                            <div class="ingredient-left"><?php echo $resultIngredient['name']; ?></div>
-                            <div class="ingredient-right"><?php echo $resultIngredient['amount']; ?></div>
+        <div class="column-detail">
+            <div class="detail-recipe shadow">
+                <div class="data-ingredient">
+                    <span class="data-header">Ingredient</span>
+                    <div class="list-ingredient">
+                        <div class="ingredient-header">
+                            <div class="ingredient-number"> </div>
+                            <div class="ingredient-left">Name</div>
+                            <div class="ingredient-right">Amount</div>
                         </div>
                         <?php
-                        $i++ ;
-                    }
-                    ?>
+                        $sql = "SELECT * FROM recipe_ingredient WHERE recipeId =" . $_GET['recipeId'];
+                        $query = mysqli_query($objCon, $sql);
+                        $i = 1;
+                        while ($resultIngredient = mysqli_fetch_assoc($query)) {
+                            ?>
+                            <div class="ingredient-item">
+                                <div class="ingredient-number"><span><?php echo $i; ?></span></div>
+                                <div class="ingredient-left"><?php echo $resultIngredient['name']; ?></div>
+                                <div class="ingredient-right"><?php echo $resultIngredient['amount']; ?></div>
+                            </div>
+                            <?php
+                            $i++;
+                        }
+                        ?>
+                    </div>
+                </div>
+                <div class="data-how">
+                    <span class="data-header">How to</span>
+                    <p>
+                        <?php echo nl2br($resultRecipe['howTo']); ?>
+                    </p>
                 </div>
             </div>
-            <div class="data-how">
-                <span class="data-header">How to</span>
-                <p>
-                    <?php echo nl2br($resultRecipe['howTo']); ?>
-                </p>
+            <div id="comment-recipe" class="comment-recipe shadow">
+                <span class="data-header">Comments</span>
+                <div id="list-comment">
+                    <?php
+                    $sqlComment = "SELECT * FROM recipe_comment WHERE recipeId =" . $_GET['recipeId'];
+                    $queryComment = mysqli_query($objCon, $sqlComment);
+                    while ($resultComment = mysqli_fetch_assoc($queryComment)) {
+                        ?>
+                        <div class="comment-box">
+                            <div class="comment-info">
+                                <img src="./src/img/profile-icon.png" alt="">
+                            </div>
+                            <div class="comment-data">
+                                <div class="comment-data-header">
+                                    <span><u><?php echo $resultComment['name']; ?></u></span>
+                                    <span style="font-size: 12px;"> <?php echo $resultComment['comment_date']; ?></span>
+                                </div>
+                                <div class="comment-data-body">
+                                    <p>
+                                        <?php echo nl2br($resultComment['comment']); ?>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <?php
+                    }
+                    ?>
+                    <div class="comment-box" style="margin-top: 5%">
+                        <div class="comment-add">
+                            <img src="./src/img/profile-icon.png" alt="">
+                        </div>
+                        <div class="comment-data">
+                            <div class="comment-data-body">
+                                <textarea name="txtComment" id="txtComment"></textarea><br>
+                                <button type="button" onclick="addComment()">Comment</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <?php
@@ -180,6 +221,31 @@ $resultRecipe = mysqli_fetch_assoc($query)
             },
             success: function (data) {
                 $("#data-vote").load(location.href + " #data-vote");
+            }
+        });
+    }
+
+    function addComment() {
+        console.log("comment")
+        $.ajax({
+            url: "./src/service/recipe/commentService.php",
+            type: "POST",
+            data: {
+                txtComment: $("#txtComment").val(),
+                recipeId: <?php echo $_GET['recipeId'] ?>,
+                uid: <?php echo $_SESSION['uid'] ?>,
+                name: "<?php echo $_SESSION["name"] ?>"
+            },
+            success: function (data) {
+                if (data == 101) {
+                    alert("Maximum comment words is 155 characters")
+                } else if (data == 400) {
+                    alert("Fail to Comment")
+                    console.log("status:400")
+                } else {
+                    $("#list-comment").load(location.href + " #list-comment");
+                    console.log(`message:${data}`)
+                }
             }
         });
     }

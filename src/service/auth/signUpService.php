@@ -1,7 +1,6 @@
 <?php
-include("../../../config.php");
 session_start();
-
+include("../../../config.php");
 $_POST["txtUsername"] = mysqli_real_escape_string($objCon, $_POST["txtUsername"]);
 $_POST["txtNewPassword"] = mysqli_real_escape_string($objCon, $_POST["txtNewPassword"]);
 $_POST["txtName"] = mysqli_real_escape_string($objCon, $_POST["txtName"]);

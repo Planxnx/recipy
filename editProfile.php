@@ -1,6 +1,7 @@
 <?php
 session_start();
-include("./config.php");
+include 'config.php';
+$_SESSION['currentPage'] = $_SERVER['REQUEST_URI'];
 if (!isset($_SESSION["uid"])) {
     $URL = "sign_in.php";
     echo "<script type='text/javascript'> alert('Please SignIn') </script>";

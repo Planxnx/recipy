@@ -1,6 +1,7 @@
 <?php
 session_start();
 include 'config.php';
+$_SESSION['currentPage'] = $_SERVER['REQUEST_URI'];
 $sql = "SELECT * FROM recipe ORDER BY RAND() ";
 $query = mysqli_query($objCon, $sql);
 ?>

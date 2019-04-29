@@ -15,8 +15,8 @@ if (!$objResult) {
     $_SESSION["uid"] = $objResult["uid"];
     $_SESSION["name"] = $objResult["name"];
     session_write_close();
-    if (isset($_SESSION['currentRecipePage'])){
-        $URL = "recipe.php?recipeId=".$_SESSION['currentRecipePage'];
+    if (isset($_SESSION['currentPage'])){
+        $URL = $_SESSION['currentPage'];
         echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
         echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
     }

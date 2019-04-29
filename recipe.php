@@ -4,7 +4,7 @@ include 'config.php';
 $sql = "SELECT * FROM recipe WHERE recipeId =" . $_GET['recipeId'];
 $query = mysqli_query($objCon, $sql);
 $resultRecipe = mysqli_fetch_assoc($query);
-$_SESSION['currentRecipePage'] = $_GET['recipeId'];
+$_SESSION['currentPage'] = $_SERVER['REQUEST_URI'];
 ?>
 
 <!DOCTYPE html>

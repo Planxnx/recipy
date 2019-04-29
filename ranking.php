@@ -3,7 +3,7 @@ session_start();
 include 'config.php';
 $sql = "SELECT * FROM recipe ORDER BY vote_score DESC";
 $query = mysqli_query($objCon, $sql);
-
+$_SESSION['currentPage'] = $_SERVER['REQUEST_URI'];
 ?>
 <!DOCTYPE html>
 

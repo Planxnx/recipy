@@ -43,9 +43,9 @@ if ($_POST['searchText'] == '') {
 
     ///////////////////////////////////
     $sqlSimilar = "";
-    $sql = "SELECT * FROM recipe WHERE name LIKE '%" . $_POST['searchText'] . "%' ;";
+    $sqlSimilar = "SELECT * FROM recipe WHERE name LIKE '%" . $_POST['searchText'] . "%' ;";
     foreach ($search_val as $item) {
-        $sql .= "SELECT * FROM recipe WHERE name LIKE '%" . $item . "%';";
+        $sqlSimilar .= "SELECT * FROM recipe WHERE name LIKE '%" . $item . "%';";
     }
 
     $sqlIngredient = "SELECT recipeId FROM recipe_ingredient WHERE ";
@@ -59,7 +59,7 @@ if ($_POST['searchText'] == '') {
     $sqlIngredient .= "GROUP BY recipeId";
     $query = mysqli_query($objCon, $sqlIngredient);
     while ($result = mysqli_fetch_array($query)) {
-        $sql .= "SELECT * FROM recipe WHERE recipeId = '" . $result['recipeId'] . "';";
+        $sqlSimilar .= "SELECT * FROM recipe WHERE recipeId = '" . $result['recipeId'] . "';";
     }
 
     $sqlIngredient = "SELECT recipeId FROM recipe_ingredient WHERE ";

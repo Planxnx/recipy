@@ -1,9 +1,10 @@
 <?php
 session_start();
 include 'config.php';
+$_SESSION['currentPage'] = $_SERVER['REQUEST_URI'];
 $sql = "SELECT * FROM recipe ORDER BY vote_score DESC";
 $query = mysqli_query($objCon, $sql);
-$_SESSION['currentPage'] = $_SERVER['REQUEST_URI'];
+
 ?>
 <!DOCTYPE html>
 

@@ -7,9 +7,9 @@ if (md.phone()) {
     alert(` Recipy ยังไม่รองรับการใช้งานบน Tablet อาจะทำให้การแสดงผลของเว็บไซต์ไม่เป็นอย่างที่ควร`);
 } else {
     console.log(`Resolution:${screen.width}x${screen.height}`);
-    if (screen.height <= 720) {
+    if (screen.height < 719) {
         alert(` Recipy ยังไม่รองรับการแสดงผลบนหน้าจอที่มีขนาดต่ำกว่า 1280x720 อาจะทำให้การแสดงผลของเว็บไซต์ไม่เป็นอย่างที่ควร`);
-    } else if (screen.width <= 720) {
+    } else if (screen.width < 719) {
         alert(` Recipy ยังไม่รองรับการแสดงผลบนหน้าจอของคุณ อาจะทำให้การแสดงผลของเว็บไซต์ไม่เป็นอย่างที่ควร`);
     }
 }

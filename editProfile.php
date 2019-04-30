@@ -1,7 +1,6 @@
 <?php
 session_start();
 include 'config.php';
-$_SESSION['currentPage'] = $_SERVER['REQUEST_URI'];
 if (!isset($_SESSION["uid"])) {
     $URL = "sign_in.php";
     echo "<script type='text/javascript'> alert('Please SignIn') </script>";
@@ -69,10 +68,11 @@ $userResult = mysqli_fetch_array($objQuery);
 <script type="text/javascript">
     function checkPasswordMatch() {
         var password = $("#txtnewPassword").val();
-        var confirmPassword = $("#txtconNewPassword").val();
-        var conPassword = $("#txtconNewPassword")[0];
+        var confirmPassword = $("#txtConPassword").val();
+        var conPassword = $("#txtConPassword")[0];
 
         if (password != confirmPassword) {
+            console.log(password+confirmPassword)
             $("#divCheckPasswordMatch").html("Passwords do not match!");
             conPassword.setCustomValidity('Passwords do not match!');
         } else {
@@ -82,10 +82,10 @@ $userResult = mysqli_fetch_array($objQuery);
     }
 
     $(document).ready(function () {
-        $("#txtnewPassword, #txtconNewPassword").keyup(checkPasswordMatch);
+        $("#txtnewPassword, #txtConPassword").keyup(checkPasswordMatch);
     });
     $(document).ready(function () {
-        $("#btnSubmit").click(function () {
+        $("#btnConfirm").click(function () {
             var valid = this.form.checkValidity();
             if (valid) {
                 event.preventDefault();
@@ -98,7 +98,7 @@ $userResult = mysqli_fetch_array($objQuery);
                             alert("Your Old Password Incorrect");
                         } else {
                             alert("Your password has been changed successfully");
-                            $("#userData").html(data);
+                            $("#main").html(data);
                         }
                     }
                 });

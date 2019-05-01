@@ -25,7 +25,7 @@ $_SESSION['currentPage'] = $_SERVER['REQUEST_URI'];
 <body>
 <div class="topNav shadow">
     <div class="homeButton">
-        <a href="index.php"> <img style="width: 80%" src="src/img/logo.png"></a>
+        <a href="index.php"> <img style="width: 70%" src="src/img/logo.png"></a>
     </div>
     <div class="topButton">
         <?php
@@ -47,8 +47,11 @@ $_SESSION['currentPage'] = $_SERVER['REQUEST_URI'];
                 }
                 ?>
             </div>
-            <button class="shadow" onclick="window.location.href = './create_recipe.php';">Create new Recipe</button>
+            <button class="shadow" onclick="window.location.href = './create_recipe.php';">Create new
+                Recipe
+            </button>
             <button class="shadow" onclick="window.location.href = './ranking.php';">Vote Ranking</button>
+
         </div>
         <div class="search-container">
             <form id="searchform">
@@ -58,9 +61,9 @@ $_SESSION['currentPage'] = $_SERVER['REQUEST_URI'];
                 <div class="tooltip tooltip-icon">
                     <i class="fa fa-info-circle" aria-hidden="true"></i>
                     <span class="tooltiptext tooltip-right " style="width: 800%;">
-                        try Intelligent Search <br>
-                        Ex. Ingredient / Recipe Name / How to
-                    </span>
+                            try Intelligent Search <br>
+                            Ex. Ingredient / Recipe Name / How to
+                        </span>
                 </div>
             </form>
         </div>

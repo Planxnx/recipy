@@ -4,7 +4,6 @@ include 'config.php';
 $_SESSION['currentPage'] = $_SERVER['REQUEST_URI'];
 $sql = "SELECT * FROM recipe ORDER BY vote_score DESC";
 $query = mysqli_query($objCon, $sql);
-
 ?>
 <!DOCTYPE html>
 
@@ -25,7 +24,7 @@ $query = mysqli_query($objCon, $sql);
 <body>
 <div class="topNav shadow">
     <div class="homeButton">
-        <a href="index.php"> <img style="width: 80%" src="src/img/logo.png"></a>
+        <a href="index.php"> <img style="width: 70%" src="src/img/logo.png"></a>
     </div>
     <div class="topButton">
         <?php
@@ -51,6 +50,7 @@ $query = mysqli_query($objCon, $sql);
                 Recipe
             </button>
             <button class="shadow" onclick="window.location.href = './ranking.php';">Vote Ranking</button>
+
         </div>
         <div class="search-container">
             <form id="searchform">

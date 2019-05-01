@@ -62,7 +62,6 @@ $userResult = mysqli_fetch_array($objQuery);
                 <a href="index.php">Back</a>
             </div>
         </div>
-
     </div>
 </div>
 <script type="text/javascript">
@@ -80,7 +79,6 @@ $userResult = mysqli_fetch_array($objQuery);
             $("#divCheckPasswordMatch").html("Passwords match.");
         }
     }
-
     $(document).ready(function () {
         $("#txtnewPassword, #txtConPassword").keyup(checkPasswordMatch);
     });

@@ -27,7 +27,7 @@ $query = mysqli_query($objCon, $sql);
 <body>
 <div class="topNav shadow">
     <div class="homeButton">
-        <a href="index.php"> <img style="width: 80%" src="src/img/logo.png"></a>
+        <a href="index.php"> <img style="width: 70%" src="src/img/logo.png"></a>
     </div>
     <div class="topButton">
         <?php
@@ -92,7 +92,7 @@ $query = mysqli_query($objCon, $sql);
                             ช่องค้นหาเพียงช่องเดียวที่สามารถใส่คำค้นหาได้ทั้ง <span
                                     style="color: #EE801E">ชื่อสูตรอาหาร</span>หรือ <span
                                     style="color: #EE801E">ส่วนผสม</span> เพื่อค้นหาผลลัพธ์ของคุณ<br>
-                            ตัวอย่างเช่น "กล้วยหอม นม น้ำตาล ช็อกโกแลต แป้งสาลี" , "ปีไก่ เกลือ พริกไทย" หรือ "แกงเขียวหวานไก่" <br>
+                            ตัวอย่างเช่น "กล้วยหอม นม น้ำตาล ช็อกโกแลต แป้งสาลี" , "ปีกไก่ เกลือ พริกไทย" หรือ "แกงเขียวหวานไก่" <br>
                         </span>
                     <span style="font-size:13px;">
                             * เว้นวรรคด้วย Spacebar สำหรับการค้นหาหลายคำ

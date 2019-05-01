@@ -125,7 +125,7 @@ a:hover {
 
 
 #signup .detail-footer img {
-    margin-top: 30%;
+    margin-top: 15%;
     width: 50%;
 }
 
@@ -152,7 +152,6 @@ a:hover {
 }
 
 .signin-button {
-    margin-top: 3%;
     margin-left: 5%;
     text-align: left;
 }

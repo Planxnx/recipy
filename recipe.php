@@ -95,11 +95,12 @@ $ingredientTemp=array();
                 $updateSql = "UPDATE recipe SET vote_score = " . $scores . " WHERE recipeId = '" . $_GET['recipeId'] . "' ";
                 $query = mysqli_query($objCon, $updateSql);
                 if (isset($_SESSION["uid"])) {
-                    $sql = "SELECT * FROM recipe_vote WHERE recipeId = '" . $_GET['recipeId'] . "' AND uid = '" . $_SESSION["uid"] . "';";
-                    $query = mysqli_query($objCon, $sql);
-                    if (!$result = mysqli_fetch_assoc($query)) {
-                        $enableVote = true;
-                    }
+//                    $sql = "SELECT * FROM recipe_vote WHERE recipeId = '" . $_GET['recipeId'] . "' AND uid = '" . $_SESSION["uid"] . "';";
+//                    $query = mysqli_query($objCon, $sql);
+//                    if (!$result = mysqli_fetch_assoc($query)) {
+//                        $enableVote = true;
+//                    }
+                    $enableVote = true;
                 }
                 ?>
                 <button <?php if (empty($enableVote)) echo "disabled" ?> type="button" onclick="voteRecipe('like')"

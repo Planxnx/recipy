@@ -5,6 +5,7 @@ $sql = "SELECT * FROM recipe WHERE recipeId =" . $_GET['recipeId'];
 $query = mysqli_query($objCon, $sql);
 $resultRecipe = mysqli_fetch_assoc($query);
 $_SESSION['currentPage'] = $_SERVER['REQUEST_URI'];
+$ingredientTemp=array();
 ?>
 
 <!DOCTYPE html>
@@ -126,6 +127,7 @@ $_SESSION['currentPage'] = $_SERVER['REQUEST_URI'];
                         $query = mysqli_query($objCon, $sql);
                         $i = 1;
                         while ($resultIngredient = mysqli_fetch_assoc($query)) {
+                            $ingredientTemp[$i] = $resultIngredient['name'];
                             ?>
                             <div class="ingredient-item">
                                 <div class="ingredient-number"><span><?php echo $i; ?></span></div>
@@ -183,6 +185,59 @@ $_SESSION['currentPage'] = $_SERVER['REQUEST_URI'];
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div id="comment-recipe" class="comment-recipe shadow">
+                <span class="data-header">Related</span>
+                <div id="list-comment">
+                    <?php
+                    $sqlIngredient = "SELECT recipeId FROM recipe_ingredient WHERE ";
+                    foreach ($ingredientTemp as $key => $item) {
+                        if ($key == 1) {
+                            $sqlIngredient .= "recipeId IN (SELECT recipeId FROM recipe_ingredient WHERE name = '" . $item . "') ";
+                        } else {
+                            $sqlIngredient .= "OR recipeId IN (SELECT recipeId FROM recipe_ingredient WHERE name = '" . $item . "')";
+                        }
+                    }
+                    $sqlIngredient .= "GROUP BY recipeId";
+                    $queryIngredient = mysqli_query($objCon, $sqlIngredient);
+                    $sql="";
+                    while ($result = mysqli_fetch_array($queryIngredient)) {
+                        $sql .= "SELECT * FROM recipe WHERE recipeId = '" . $result['recipeId'] . "';";
+                    }
+                    if (mysqli_multi_query($objCon, $sql)) {
+                        do {
+                            if ($resultAll = mysqli_store_result($objCon)) {
+                                while ($result = mysqli_fetch_array($resultAll)) {
+                                    $resultRelated[] = $result;
+                                }
+                                mysqli_free_result($resultAll);
+                            }
+                        } while (mysqli_next_result($objCon));
+                    }
+                    foreach ($resultRelated as  $key => $item) {
+                        if ($item['name'] != $resultRecipe['name'] && $key <= 3 ) {
+                            ?>
+                            <div class="comment-box">
+                                <div class="comment-info">
+                                    <img src="./src/service/recipe/images/<?php echo $item['recipeImg']; ?>">
+                                </div>
+                                <div class="comment-data">
+                                    <div class="comment-data-header">
+                                        <span><u><?php echo $item['name']; ?></u></span>
+                                        <span style="font-size: 12px;"> <?php echo $item['category']; ?></span>
+                                    </div>
+                                    <div class="comment-data-body">
+                                        <p>
+                                            <?php echo nl2br($item['description']); ?>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php
+                        }
+                    }
+                    ?>
                 </div>
             </div>
         </div>

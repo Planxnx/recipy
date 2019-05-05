@@ -43,6 +43,21 @@ if ($_POST['searchText'] == '') {
 
     $sql .= "SELECT * FROM recipe WHERE name LIKE '%" . $_POST['searchText'] . "%' ;";
 
+    $sqlTag = "SELECT recipeId FROM recipe_tag WHERE ";
+    foreach ($search_val as $key => $item) {
+        if ($key == 0) {
+            $sqlTag .= "recipeId IN (SELECT recipeId FROM recipe_tag WHERE name LIKE '%" . $item . "%') ";
+        } else {
+            $sqlTag .= "AND recipeId IN (SELECT recipeId FROM recipe_tag WHERE name LIKE '%" . $item . "%')";
+        }
+    }
+    $sqlTag .= "GROUP BY recipeId";
+    $query = mysqli_query($objCon, $sqlTag);
+    while ($result = mysqli_fetch_array($query)) {
+        $sql .= "SELECT * FROM recipe WHERE recipeId = '" . $result['recipeId'] . "';";
+    }
+
+
     ///////////////////////////////////
     $sqlSimilar = "";
     $sqlSimilar = "SELECT * FROM recipe WHERE name LIKE '%" . $_POST['searchText'] . "%' ;";
@@ -77,6 +92,21 @@ if ($_POST['searchText'] == '') {
     while ($result = mysqli_fetch_array($query)) {
         $sqlSimilar .= "SELECT * FROM recipe WHERE recipeId = '" . $result['recipeId'] . "';";
     }
+
+    $sqlTag = "SELECT recipeId FROM recipe_tag WHERE ";
+    foreach ($search_val as $key => $item) {
+        if ($key == 0) {
+            $sqlTag .= "recipeId IN (SELECT recipeId FROM recipe_tag WHERE name LIKE '%" . $item . "%') ";
+        } else {
+            $sqlTag .= "OR recipeId IN (SELECT recipeId FROM recipe_tag WHERE name LIKE '%" . $item . "%')";
+        }
+    }
+    $sqlTag .= "GROUP BY recipeId";
+    $query = mysqli_query($objCon, $sqlTag);
+    while ($result = mysqli_fetch_array($query)) {
+        $sqlSimilar .= "SELECT * FROM recipe WHERE recipeId = '" . $result['recipeId'] . "';";
+    }
+
 }
 $fullResult = array();
 $fullSimilarResult = array();

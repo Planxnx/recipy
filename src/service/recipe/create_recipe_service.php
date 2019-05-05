@@ -9,6 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $_POST["txtname"] = mysqli_real_escape_string($objCon, $_POST["txtname"]);
     $_POST["txtdescription"] = mysqli_real_escape_string($objCon, $_POST["txtdescription"]);
     $_POST["txthowTo"] = mysqli_real_escape_string($objCon, $_POST["txthowTo"]);
+    $_POST["tag_name"] = mysqli_real_escape_string($objCon, $_POST["tag_name"]);
 
     $name = checkInput($_POST["txtname"]);
     $description = checkInput($_POST["txtdescription"]);
@@ -17,6 +18,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $upload_image = new upload($_FILES['recipeImg']);
     $txtingredient = $_POST['txtingredient'];
     $txtamount = $_POST['txtamount'];
+    $tag_name =  explode(" ", trim($_POST["tag_name"]));
+
     if ($upload_image->uploaded) {
         $upload_image->image_resize = true;
         $upload_image->image_ratio_crop = true;
@@ -33,6 +36,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $recipeId = mysqli_insert_id($objCon);
             foreach ($txtingredient as $key => $value) {
                 $strSQL = "INSERT INTO recipe_ingredient (recipeId,name,amount) VALUES ('" . $recipeId . "','" . $value . "','" . $txtamount[$key] . "')";
+                $objQuery = mysqli_query($objCon, $strSQL);
+            }
+            foreach ($tag_name as $key => $value) {
+                $strSQL = "INSERT INTO recipe_tag (recipeId,name) VALUES ('" . $recipeId . "','" . $value . "')";
                 $objQuery = mysqli_query($objCon, $strSQL);
             }
             if ($recipeId) {

@@ -248,5 +248,23 @@ button[disabled]:hover {
     display: block;
 }
 
+#list-related{
+    display: flex;
+    margin: auto;
+    text-align: center;
+    width: 90%;
+}
+.related-box{
+    width: 28%;
+    margin: 3%;
+}
+.relatedImg img{
+    width: 100%;
+    
+}
+.relatedImg img:hover{
+    box-shadow: 5px 8px 9px rgba(0, 0, 0, 0.2), 5px 8px 9px rgba(0, 0, 0, 0.2);
+}
+
 
 

@@ -209,7 +209,7 @@ $ingredientTemp = array();
             </div>
             <div id="comment-recipe" class="comment-recipe shadow">
                 <span class="data-header">Related</span>
-                <div id="list-comment">
+                <div id="list-related">
                     <?php
                     $sqlIngredient = "SELECT recipeId FROM recipe_ingredient WHERE ";
                     foreach ($ingredientTemp as $key => $item) {
@@ -238,21 +238,14 @@ $ingredientTemp = array();
                     foreach ($resultRelated as $key => $item) {
                         if ($item['name'] != $resultRecipe['name'] && $key < 3) {
                             ?>
-                            <div class="comment-box">
-                                <div class="comment-info">
-                                    <img src="./src/service/recipe/images/<?php echo $item['recipeImg']; ?>">
-                                </div>
-                                <div class="comment-data">
-                                    <div class="comment-data-header">
-                                        <span><u><?php echo $item['name']; ?></u></span>
-                                        <span style="font-size: 12px;"> <?php echo $item['category']; ?></span>
-                                    </div>
-                                    <div class="comment-data-body">
-                                        <p>
-                                            <?php echo nl2br($item['description']); ?>
-                                        </p>
-                                    </div>
-                                </div>
+                            <div class="related-box">
+                                        <a href="recipe.php?recipeId=<?php echo $item['recipeId'] ?>">
+                                            <div class="relatedImg">
+                                                <img src="./src/service/recipe/images/<?php echo $item['recipeImg']; ?>">
+                                            </div>
+                                            <span><u><?php echo $item['name']; ?></u></span> <br>
+                                            <span style="font-size: 12px;"> <?php echo $item['category']; ?></span>
+                                        </a>
                             </div>
                             <?php
                         }

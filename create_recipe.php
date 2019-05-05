@@ -138,7 +138,7 @@ if (!isset($_SESSION["uid"])) {
             </div>
             <br>
             <div class="recipeTag">
-                <input type="text" id="tag_name" name="tag_name" placeholder="Ex.'ประหยัด ทำง่าย ปาร์ตี้' ">
+                <input type="text" id="tag_name" name="tag_name" placeholder="Ex.'ประหยัด ทำง่าย ปาร์ตี้ ทอด' ">
             </div>
             <br>
             <button id="submitForm" class="shadow" type="submit">Create</button>

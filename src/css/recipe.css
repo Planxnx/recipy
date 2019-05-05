@@ -260,7 +260,7 @@ button[disabled]:hover {
 }
 .relatedImg img{
     width: 100%;
-    
+
 }
 .relatedImg img:hover{
     box-shadow: 5px 8px 9px rgba(0, 0, 0, 0.2), 5px 8px 9px rgba(0, 0, 0, 0.2);

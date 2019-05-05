@@ -13,6 +13,12 @@ if ($_POST['searchText'] == '') {
         $sql .= "SELECT * FROM recipe WHERE name = '" . $item . "';";
     }
 
+    $sqlTag = "SELECT recipeId FROM recipe_tag WHERE name = '" . $_POST['searchText'] . "'";
+    $query = mysqli_query($objCon, $sqlTag);
+    while ($result = mysqli_fetch_array($query)) {
+        $sql .= "SELECT * FROM recipe WHERE recipeId = '" . $result['recipeId'] . "';";
+    }
+
     $sqlIngredient = "SELECT recipeId FROM recipe_ingredient WHERE ";
     foreach ($search_val as $key => $item) {
         if ($key == 0) {

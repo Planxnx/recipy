@@ -40,14 +40,16 @@
 }
 
 #txtname,
-#ddlcategory {
+#ddlcategory,
+#tag_name{
     width: 40%;
     border: none;
     -webkit-transition: width 0.4s ease-in-out;
     transition: width 0.4s ease-in-out;
 }
 
-#txtname:focus {
+#txtname:focus,
+#tag_name:focus{
     width: 80%;
 }
 
@@ -56,6 +58,11 @@
 #txtingredient {
     width: 100%;
     resize: none;
+    border: none;
+}
+
+#ingredientInput{
+    border: none;
 }
 
 

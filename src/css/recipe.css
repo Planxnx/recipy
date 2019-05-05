@@ -239,5 +239,14 @@ button[disabled]:hover {
     border: none;
 }
 
+.recipe-tag{
+    margin-left: 3%;
+    margin-right: 3%;
+    text-align: justify;
+    font-size: 13px;
+    width: 94%;
+    display: block;
+}
+
 
 

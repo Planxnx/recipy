@@ -5,7 +5,7 @@ $sql = "SELECT * FROM recipe WHERE recipeId =" . $_GET['recipeId'];
 $query = mysqli_query($objCon, $sql);
 $resultRecipe = mysqli_fetch_assoc($query);
 $_SESSION['currentPage'] = $_SERVER['REQUEST_URI'];
-$ingredientTemp=array();
+$ingredientTemp = array();
 ?>
 
 <!DOCTYPE html>
@@ -147,6 +147,25 @@ $ingredientTemp=array();
                         <?php echo nl2br($resultRecipe['howTo']); ?>
                     </p>
                 </div>
+                <div class="recipe-tag">
+                    <?php
+                    $sql = "SELECT * FROM recipe_tag WHERE recipeId =" . $_GET['recipeId'];
+                    $query = mysqli_query($objCon, $sql);
+                    $i = 1;
+                    while ($resultIngredient = mysqli_fetch_assoc($query)) {
+                        if ($i == 1) {
+                            ?>
+                            <span>Tag : </span><span><?php echo $resultIngredient['name']; ?></span>
+                            <?php
+                        } else {
+                            ?>
+                            <span>, <?php echo $resultIngredient['name']; ?></span>
+                            <?php
+                        }
+                        $i++;
+                    }
+                    ?>
+                </div>
             </div>
             <div id="comment-recipe" class="comment-recipe shadow">
                 <span class="data-header">Comments</span>
@@ -202,7 +221,7 @@ $ingredientTemp=array();
                     }
                     $sqlIngredient .= "GROUP BY recipeId";
                     $queryIngredient = mysqli_query($objCon, $sqlIngredient);
-                    $sql="";
+                    $sql = "";
                     while ($result = mysqli_fetch_array($queryIngredient)) {
                         $sql .= "SELECT * FROM recipe WHERE recipeId = '" . $result['recipeId'] . "';";
                     }
@@ -216,8 +235,8 @@ $ingredientTemp=array();
                             }
                         } while (mysqli_next_result($objCon));
                     }
-                    foreach ($resultRelated as  $key => $item) {
-                        if ($item['name'] != $resultRecipe['name'] && $key <= 3 ) {
+                    foreach ($resultRelated as $key => $item) {
+                        if ($item['name'] != $resultRecipe['name'] && $key < 3) {
                             ?>
                             <div class="comment-box">
                                 <div class="comment-info">
@@ -282,9 +301,9 @@ $ingredientTemp=array();
             success: function (data) {
                 if (data == 101) {
                     alert("Comment Length: 1 - 155 characters")
-                }else if (data == 102) {
+                } else if (data == 102) {
                     alert('Please Sign In to Comment!')
-                    document.location.href='sign_in.php';
+                    document.location.href = 'sign_in.php';
                 } else if (data == 400) {
                     alert("Fail to Comment")
                     console.log("status:400")

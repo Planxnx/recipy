@@ -111,12 +111,11 @@ if (!isset($_SESSION["uid"])) {
                     </span>
             </div>
             <br>
-            <!--            <textarea required name="txtingredient" id="txtingredient" cols="30" rows="10"></textarea><br>-->
             <div class="input_fields_wrap">
-                <input required type="text" name="txtingredient[]" placeholder="Name Ex.' อกไก่ ' ">
-                <input required type="text" name="txtamount[]" placeholder="Amount Ex.' 2.1 กิโลกรัม '">
-                <input required type="text" name="txtingredient[]" placeholder="Name Ex.' น้ำตาลทราย ' ">
-                <input required type="text" name="txtamount[]" placeholder="Amount Ex.' 2 ช้อนชา ' ">
+                <input required type="text" id="ingredientInput" name="txtingredient[]" placeholder="Name Ex.' อกไก่ ' ">
+                <input required type="text" id="ingredientInput" name="txtamount[]" placeholder="Amount Ex.' 2.1 กิโลกรัม '"><br>
+                <input required type="text" id="ingredientInput" name="txtingredient[]" placeholder="Name Ex.' น้ำตาลทราย ' ">
+                <input required type="text" id="ingredientInput" name="txtamount[]" placeholder="Amount Ex.' 2 ช้อนชา ' ">
             </div>
             <button type="button" id="addField" class="addField shadow" style="float: left;font-size: 13px;padding:0;margin-top: 1%;">  add more Ingredient 
             </button>
@@ -130,6 +129,18 @@ if (!isset($_SESSION["uid"])) {
             </div>
             <br>
             <textarea required name="txthowTo" id="txthowTo" cols="30" rows="10"></textarea><br>
+            <label for="recipeTag">Tag</label>
+            <div class="tooltip" style="font-size: 17px;">
+                <i class="fa fa-info-circle" aria-hidden="true"></i>
+                <span class="tooltiptext tooltip-right " style="width: 1600%;">
+                        tag everything in recipe and <br> Use space between tag
+                    </span>
+            </div>
+            <br>
+            <div class="recipeTag">
+                <input type="text" id="tag_name" name="tag_name" placeholder="Ex.'ประหยัด ทำง่าย ปาร์ตี้' ">
+            </div>
+            <br>
             <button id="submitForm" class="shadow" type="submit">Create</button>
         </form>
     </div>
@@ -164,7 +175,7 @@ if (!isset($_SESSION["uid"])) {
             e.preventDefault();
             if (x < max_fields) {
                 x++;
-                $(".input_fields_wrap").append('<div><input required type="text" name="txtingredient[]" placeholder="Name"> <input required type="text" name="txtamount[]" placeholder="Amount"> <a href="#" class="remove_field">&#10006;</a></div>');
+                $(".input_fields_wrap").append('<div><input required type="text" id="ingredientInput" name="txtingredient[]" placeholder="Name"> <input required type="text" id="ingredientInput" name="txtamount[]" placeholder="Amount"> <a href="#" class="remove_field">&#10006;</a><br></div>');
             }
         });
         $(".input_fields_wrap").on("click", ".remove_field", function (e) {
@@ -172,6 +183,8 @@ if (!isset($_SESSION["uid"])) {
             $(this).parent('div').remove();
             x--;
         })
+
+
     });
 </script>
 </body>

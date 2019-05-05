@@ -41,6 +41,8 @@ if ($_POST['searchText'] == '') {
         $sql .= "SELECT * FROM recipe WHERE recipeId = '" . $result['recipeId'] . "';";
     }
 
+    $sql .= "SELECT * FROM recipe WHERE name LIKE '%" . $_POST['searchText'] . "%' ;";
+
     ///////////////////////////////////
     $sqlSimilar = "";
     $sqlSimilar = "SELECT * FROM recipe WHERE name LIKE '%" . $_POST['searchText'] . "%' ;";

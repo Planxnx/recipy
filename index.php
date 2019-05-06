@@ -21,7 +21,6 @@ $query = mysqli_query($objCon, $sql);
     <link rel="stylesheet" href="./src/css/index.css">
     <script src="https://cdn.jsdelivr.net/npm/mobile-detect@1.4.3/mobile-detect.min.js"></script>
     <script src="./src/js/display_check.js"></script>
-    <!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>-->
     <script src="./src/js/jquery-3.4.0.min.js"></script>
 </head>
 <body>
@@ -93,7 +92,8 @@ $query = mysqli_query($objCon, $sql);
                                     style="color: #EE801E">ชื่อสูตรอาหาร</span>หรือ <span
                                     style="color: #EE801E">ส่วนผสม</span> เพื่อค้นหาผลลัพธ์ของคุณ<br>
                             ตัวอย่างเช่น "กล้วยหอม นม น้ำตาล ช็อกโกแลต แป้งสาลี" , "ปีกไก่ เกลือ พริกไทย" หรือ "แกงเขียวหวานไก่" <br>
-                            หรืออาจจะเป็นคีย์เวิร์ดอะไรก็ได้ เช่น "ทำง่าย ประหยัด" , "ทอด" เพื่อค้นหาตาม <span style="color: #EE801E">tag</span> ของสูตรอาหาร
+                            หรืออาจจะเป็นคีย์เวิร์ดอะไรก็ได้ เช่น "ทำง่าย ประหยัด" , "ทอด" เพื่อค้นหาตาม <span
+                                    style="color: #EE801E">tag</span> ของสูตรอาหาร
                         </span><br>
                     <span style="font-size:13px;">
                             * เว้นวรรคด้วย Spacebar สำหรับการค้นหาหลายคำ
@@ -147,21 +147,22 @@ $query = mysqli_query($objCon, $sql);
     </div>
 </div>
 <script>
-    <?php
-    if (!isset($_SESSION["uid"])) {
-    ?>
-    $(document).ready(function () {
+    $(document).ready(() => {
+        <?php
+        if (!isset($_SESSION["uid"])) {
+        ?>
+
         $('#myModal').show(0);
 
-        $("#closeBtn").click(function () {
+        $("#closeBtn").click(() => {
             $('#myModal').hide(0);
         });
+        <?php
+        }
+        ?>
 
     });
-    <?php
-    }
-    ?>
-    $('#searchform').on('submit', function (e) {
+    $('#searchform').on('submit', e => {
         e.preventDefault();
         e.stopPropagation();
         $.ajax({
@@ -182,6 +183,7 @@ $query = mysqli_query($objCon, $sql);
             }
         });
     });
+
 </script>
 </body>
 

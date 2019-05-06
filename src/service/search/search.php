@@ -1,10 +1,41 @@
 <?php
 include 'searchService.php';
 //include 'searchEngine.php';
+
+function categoryConvert($category)
+{
+    if ($category == "Everyday") {
+        return "recipeEveryday";
+    } else if ($category == "Quick & Easy") {
+        return "recipeEasy";
+    } else if ($category == "Healthy") {
+        return "recipeHealth";
+    } else if ($category == "Dessert") {
+        return "recipeDessert";
+    } else if ($category == "Cake & Baking") {
+        return "recipeBaking";
+    } else if ($category == "Drinks") {
+        return "recipeDrinks";
+    }
+}
+
 if ($fullResult) {
     ?>
+    <script src="./src/js/index.js"></script>
     <div class="list-header">
         <span>Your results</span>
+        <div class="dropdown">
+            <button class="dropbtn">Fliter</button>
+            <div class="dropdown-content">
+                <a href="#" onclick="categoryFilter('recipeAll')">Show All</a>
+                <a href="#" onclick="categoryFilter('recipeEveryday')">Everyday</a>
+                <a href="#" onclick="categoryFilter('recipeEasy')">Quick & Easy</a>
+                <a href="#" onclick="categoryFilter('recipeHealth')">Healthy</a>
+                <a href="#" onclick="categoryFilter('recipeDessert')">Dessert</a>
+                <a href="#" onclick="categoryFilter('recipeBaking')">Cake & Baking</a>
+                <a href="#" onclick="categoryFilter('recipeDrinks')">Drinks</a>
+            </div>
+        </div>
     </div>
     <?php
     $i = 1;
@@ -12,19 +43,19 @@ if ($fullResult) {
         <script>
             console.log("<?php echo $value['recipeId'] ?>");
         </script>
-        <div class="box-data column">
+        <div class="box-data column <?php echo categoryConvert($value['category']); ?>">
             <a href="recipe.php?recipeId=<?php echo $value['recipeId'] ?>">
                 <div class="crop">
                     <img src="./src/service/recipe/images/<?php echo $value['recipeImg']; ?>">
                 </div>
                 <span style="font-weight: 500;" class="data-detail"><?php echo $value['name']; ?></span> <br>
-                <span style="font-size: 13px;" class="data-detail"><?php echo $value['category']; ?></span>
+                <span style="font-size: 13px;" class="data-detail "><?php echo $value['category']; ?></span>
             </a>
         </div>
         <?php $i++;
     }
-}else if ($fullSimilarResult) {
-    if(!$fullResult){
+} else if ($fullSimilarResult) {
+    if (!$fullResult) {
         echo "<div class='list-header'><span>Your results not found</span></div>";
     }
     ?>
@@ -36,7 +67,7 @@ if ($fullResult) {
     <?php
     $i = 1;
     foreach ($fullSimilarResult as $index => $value) {
-        if ($index < 9 ) {
+        if ($index < 9) {
             ?>
             <div class="box-data column">
                 <a href="recipe.php?recipeId=<?php echo $value['recipeId'] ?>">

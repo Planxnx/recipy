@@ -56,7 +56,23 @@ if ($fullResult) {
     }
 } else if ($fullSimilarResult) {
     if (!$fullResult) {
-        echo "<div class='list-header'><span>Your results not found</span></div>";
+        ?>
+        <div class='list-header'>
+            <span>Your results not found</span>
+            <div class="dropdown">
+                <button class="dropbtn">Fliter</button>
+                <div class="dropdown-content">
+                    <a href="#" onclick="categoryFilter('recipeAll')">Show All</a>
+                    <a href="#" onclick="categoryFilter('recipeEveryday')">Everyday</a>
+                    <a href="#" onclick="categoryFilter('recipeEasy')">Quick & Easy</a>
+                    <a href="#" onclick="categoryFilter('recipeHealth')">Healthy</a>
+                    <a href="#" onclick="categoryFilter('recipeDessert')">Dessert</a>
+                    <a href="#" onclick="categoryFilter('recipeBaking')">Cake & Baking</a>
+                    <a href="#" onclick="categoryFilter('recipeDrinks')">Drinks</a>
+                </div>
+            </div>
+        </div>
+        <?php
     }
     ?>
     <br>
@@ -69,7 +85,7 @@ if ($fullResult) {
     foreach ($fullSimilarResult as $index => $value) {
         if ($index < 9) {
             ?>
-            <div class="box-data column">
+            <div class="box-data column <?php echo categoryConvert($value['category']); ?>">
                 <a href="recipe.php?recipeId=<?php echo $value['recipeId'] ?>">
                     <div class="crop">
                         <img src="./src/service/recipe/images/<?php echo $value['recipeImg']; ?>">

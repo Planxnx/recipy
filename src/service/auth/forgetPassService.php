@@ -4,9 +4,7 @@ include("../../../config.php");
 $_POST['txtUsername'] = mysqli_real_escape_string($objCon, $_POST['txtUsername']);
 $_POST['txtEmail'] = mysqli_real_escape_string($objCon, $_POST['txtEmail']);
 
-$strSQL = "SELECT * FROM user WHERE username =
-'" . mysqli_real_escape_string($objCon, $_POST['txtUsername']) . "'
-and email = '" . mysqli_real_escape_string($objCon, $_POST['txtEmail']) . "'";
+$strSQL = "SELECT * FROM user WHERE username ='" . $_POST['txtUsername'] . "'AND email = '" . $_POST['txtEmail'] . "'";
 $objQuery = mysqli_query($objCon, $strSQL);
 $objResult = mysqli_fetch_array($objQuery);
 

@@ -18,9 +18,8 @@ if ($usernameResult) {
 } else if ($emailResult) {
     echo 102;
 } else {
-    $strSQL = "INSERT INTO user(username,password,name,email) VALUES ('" . $_POST["txtUsername"] . "',
-  '" . $_POST["txtNewPassword"] . "','" . $_POST["txtName"] . "','" . $_POST["txtEmail"] . "')";
-    $objQuery = mysqli_query($objCon, $strSQL);
+    $sql = "INSERT INTO user(username,password,name,email) VALUES ('" . $_POST["txtUsername"] . "', '" . $_POST["txtNewPassword"] . "','" . $_POST["txtName"] . "','" . $_POST["txtEmail"] . "')";
+    $objQuery = mysqli_query($objCon, $sql);
     $_SESSION["uid"] = mysqli_insert_id($objCon);
     $strSQL = "SELECT name FROM user WHERE uid = '" . $_SESSION["uid"] . "' ";
     $objQuery = mysqli_query($objCon, $strSQL);
@@ -28,12 +27,11 @@ if ($usernameResult) {
     $_SESSION["name"] = $objResult["name"];
 
     session_write_close();
-    if (isset($_SESSION['currentPage'])){
+    if (isset($_SESSION['currentPage'])) {
         $URL = $_SESSION['currentPage'];
         echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
         echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
-    }
-    else{
+    } else {
         $URL = "index.php";
         echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
         echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';

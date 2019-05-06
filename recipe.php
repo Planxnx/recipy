@@ -183,6 +183,7 @@ $ingredientTemp = array();
                                 <div class="comment-data-header">
                                     <span><u><?php echo $resultComment['name']; ?></u></span>
                                     <span style="font-size: 12px;"> <?php echo $resultComment['comment_date']; ?></span>
+                                    <span style="margin-left: 2%;cursor: pointer" onclick="removeComment(<?php echo $resultComment['id']; ?>,<?php echo $resultComment['uid']; ?>)"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
                                 </div>
                                 <div class="comment-data-body">
                                     <p>
@@ -239,13 +240,13 @@ $ingredientTemp = array();
                         if ($item['name'] != $resultRecipe['name'] && $key < 3) {
                             ?>
                             <div class="related-box">
-                                        <a href="recipe.php?recipeId=<?php echo $item['recipeId'] ?>">
-                                            <div class="relatedImg">
-                                                <img src="./src/service/recipe/images/<?php echo $item['recipeImg']; ?>">
-                                            </div>
-                                            <span><u><?php echo $item['name']; ?></u></span> <br>
-                                            <span style="font-size: 12px;"> <?php echo $item['category']; ?></span>
-                                        </a>
+                                <a href="recipe.php?recipeId=<?php echo $item['recipeId'] ?>">
+                                    <div class="relatedImg">
+                                        <img src="./src/service/recipe/images/<?php echo $item['recipeImg']; ?>">
+                                    </div>
+                                    <span><u><?php echo $item['name']; ?></u></span> <br>
+                                    <span style="font-size: 12px;"> <?php echo $item['category']; ?></span>
+                                </a>
                             </div>
                             <?php
                         }
@@ -282,7 +283,7 @@ $ingredientTemp = array();
         });
     });
 
-    function addComment() {
+    const addComment = () => {
         console.log("comment")
         $.ajax({
             url: "./src/service/recipe/commentService.php",
@@ -307,8 +308,7 @@ $ingredientTemp = array();
             }
         });
     }
-
-    function voteRecipe(data) {
+    const voteRecipe = (data) => {
         $.ajax({
             url: "./src/service/recipe/voteService.php",
             type: "POST",
@@ -318,6 +318,31 @@ $ingredientTemp = array();
             },
             success: function (data) {
                 $("#data-vote").load(location.href + " #data-vote");
+            }
+        });
+    }
+
+    const removeComment = (commentId,uid) => {
+        console.log("removeCOmment");
+        $.ajax({
+            url: "./src/service/recipe/deleteCommentService.php",
+            type: "POST",
+            data: {
+                uid:uid,
+                commentId: commentId
+            },
+            success: function (data) {
+                if (data == 101) {
+                    alert("You don't own this comment!")
+                } else if (data == 102) {
+                    alert('Please Sign In to delete comment!')
+                } else if (data == 400) {
+                    alert("Fail to Comment")
+                    console.log("status:400")
+                } else {
+                    $("#list-comment").load(location.href + " #list-comment");
+                    console.log(`message:${data}`)
+                }
             }
         });
     }

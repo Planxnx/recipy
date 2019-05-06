@@ -22,9 +22,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($upload_image->uploaded) {
         $upload_image->image_resize = true;
-        $upload_image->image_ratio_crop = true;
         $upload_image->image_y = 300;
         $upload_image->image_x = 300;
+        $upload_image->image_ratio_crop = true;
         $upload_image->allowed = array('application/pdf', 'application/msword', 'application/octet-stream', 'image/*');
         $upload_image->file_new_name_body = md5(mt_rand());
         $upload_image->process("images");

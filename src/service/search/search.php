@@ -23,7 +23,7 @@ if ($fullResult) {
     ?>
     <script src="./src/js/index.js"></script>
     <div class="list-header">
-        <span>Your results</span>
+        <span>Found <?php echo $fullResultCount ?> results</span>
         <div class="dropdown">
             <button class="dropbtn">Fliter</button>
             <div class="dropdown-content">

@@ -128,7 +128,7 @@ if (mysqli_multi_query($objCon, $sql)) {
     } while (mysqli_next_result($objCon));
 }
 $fullResult = array_unique($fullResult, SORT_REGULAR);
-
+$fullResultCount = count($fullResult);
 if (mysqli_multi_query($objCon, $sqlSimilar)) {
     do {
         if ($resultAll = mysqli_store_result($objCon)) {

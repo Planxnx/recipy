@@ -1,0 +1,110 @@
+#content {
+    margin: 60px;
+    margin-top: 140px;
+    margin-bottom: 140px;
+}
+
+#content .rank-container{
+    background-color: #F7F9F9;
+    display: block;
+    margin: auto;
+    width: 50%;
+    height: 100%;
+}
+
+#content .list-header {
+    font-size: 24px;
+    font-weight: 500;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    text-align: center
+}
+
+.box-vote-header{
+    margin-bottom: 1%;
+    display: flex;
+    justify-content: center;
+}
+.box-vote-header .recipe-number{
+    text-align: center;
+    width: 15%;
+    background: #F0F0F0;
+}
+.box-vote-header .recipe-name{
+    text-align: center;
+    width: 60%;
+    background: #F0F0F0
+}
+.box-vote-header .recipe-status{
+    text-align: center;
+    width: 25%;
+    background: #F0F0F0
+}
+
+a{
+    color: black;
+}
+
+.box-recipe{
+    background: #E0E0E0;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1%;
+    -webkit-transition: background 0.2s ease-in-out;
+    transition: background 0.2s ease-in-out;
+    -webkit-transition: font-size 0.2s ease-in-out;
+    transition: font-size 0.2s ease-in-out;
+}
+.box-recipe:hover{
+    color: #F0F0F0;
+    background: #D69764;
+    font-size: 22px;
+}
+.box-recipe .recipe-number{
+    text-align: center;
+    width: 15%;
+    border: none;
+}
+.box-recipe .recipe-name{
+    text-align: center;
+    width: 60%;
+}
+.box-recipe .recipe-status{
+    text-align: center;
+    width: 25%;
+}
+.select-header{
+    font-size: 17px;
+    font-weight: 500;
+    text-align: left;
+}
+
+#control-list{
+    margin-bottom: 4%;
+}
+
+#recipe-select {
+    margin: 2%;
+}
+
+#recipe-select button {
+    background: #EE801E;
+    font-size: 13px;
+    border: none;
+    cursor: pointer;
+    color: #F7F9F9;
+    padding: 2px;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.back-button {
+    text-align: right;
+    color: #EE801E;
+    font-weight: 600;
+}
+.back-button a {
+    color: #EE801E;
+    font-weight: 600;
+}
+

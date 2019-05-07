@@ -2,8 +2,6 @@
 session_start();
 include 'config.php';
 $_SESSION['currentPage'] = $_SERVER['REQUEST_URI'];
-$sql = "SELECT * FROM recipe ORDER BY RAND() ";
-$query = mysqli_query($objCon, $sql);
 ?>
 <!DOCTYPE html>
 
@@ -128,9 +126,36 @@ $query = mysqli_query($objCon, $sql);
         <div class="list-header">
             <span>Random Recipe</span>
         </div>
-        <?php $i = 1;
+        <?php
+        $promoteSql = "SELECT * FROM recipe WHERE promote = TRUE ORDER BY RAND()";
+        $promoteQuery = mysqli_query($objCon, $promoteSql);
+        $i = 1;
+        $promoteRecipeTemp = array();
+        while ($promoteRecipe = mysqli_fetch_assoc($promoteQuery)) {
+            $promoteRecipeTemp[$i] = $promoteRecipe['recipeId'];
+            ?>
+            <div id="recipe-<?php echo $promoteRecipe['recipeId'] ?>" class="box-data column">
+                <a href="recipe.php?recipeId=<?php echo $promoteRecipe['recipeId'] ?>">
+                    <div class="crop promote-crop">
+                        <div class="promote-tag">
+                            <span>Promote by Recipy</span>
+                        </div>
+                        <img src="./src/service/recipe/images/<?php echo $promoteRecipe['recipeImg']; ?>">
+                    </div>
+                    <span style="font-weight: 500;" class="data-detail"><?php echo $promoteRecipe['name']; ?></span>
+                    <br>
+                    <span style="font-size: 12px;" class="data-detail "><?php echo $promoteRecipe['category']; ?></span>
+                </a>
+            </div>
+            <?php
+            if ($i > 1) break;
+            $i++;
+        }
+        $i = 1;
+        $sql = "SELECT * FROM recipe WHERE recipeId NOT IN ('". $promoteRecipeTemp[1] ."','".$promoteRecipeTemp[2]."') ORDER BY RAND() ";
+        $query = mysqli_query($objCon, $sql);
         while ($value = mysqli_fetch_assoc($query)) { ?>
-            <div class="box-data column">
+            <div id="recipe-<?php echo $value['recipeId'] ?>" class="box-data column">
                 <a href="recipe.php?recipeId=<?php echo $value['recipeId'] ?>">
                     <div class="crop">
                         <img src="./src/service/recipe/images/<?php echo $value['recipeImg']; ?>">
@@ -140,9 +165,8 @@ $query = mysqli_query($objCon, $sql);
                 </a>
             </div>
             <?php $i++;
-            if ($i > 8) break;
+            if ($i > 6) break;
         }
-        mysqli_close($objCon);
         ?>
     </div>
 </div>
@@ -162,6 +186,7 @@ $query = mysqli_query($objCon, $sql);
         ?>
 
     });
+
     $('#searchform').on('submit', e => {
         e.preventDefault();
         e.stopPropagation();
@@ -183,6 +208,7 @@ $query = mysqli_query($objCon, $sql);
             }
         });
     });
+
 
 </script>
 </body>

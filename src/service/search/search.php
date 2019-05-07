@@ -1,6 +1,5 @@
 <?php
 include 'searchService.php';
-//include 'searchEngine.php';
 
 function categoryConvert($category)
 {
@@ -38,12 +37,36 @@ if ($fullResult) {
         </div>
     </div>
     <?php
+    $promoteSql = "SELECT * FROM recipe WHERE promote = TRUE ORDER BY RAND()";
+    $promoteQuery = mysqli_query($objCon, $promoteSql);
+    $i = 1;
+    $promoteRecipeTemp = array();
+    while ($promoteRecipe = mysqli_fetch_assoc($promoteQuery)) {
+        $promoteRecipeTemp[$i] = $promoteRecipe['recipeId'];
+        ?>
+        <div id="recipe-<?php echo $promoteRecipe['recipeId'] ?>"
+             class="box-data column <?php echo categoryConvert($promoteRecipe['category']); ?>">
+            <a href="recipe.php?recipeId=<?php echo $promoteRecipe['recipeId'] ?>">
+                <div class="crop promote-crop">
+                    <div class="promote-tag">
+                        <span>Promote by Recipy</span>
+                    </div>
+                    <img src="./src/service/recipe/images/<?php echo $promoteRecipe['recipeImg']; ?>">
+                </div>
+                <span style="font-weight: 500;" class="data-detail"><?php echo $promoteRecipe['name']; ?></span> <br>
+                <span style="font-size: 13px;" class="data-detail "><?php echo $promoteRecipe['category']; ?></span>
+            </a>
+        </div>
+        <?php
+        if ($i > 1) break;
+        $i++;
+    }
+    ?>
+    <?php
     $i = 1;
     foreach ($fullResult as $value) { ?>
-        <script>
-            console.log("<?php echo $value['recipeId'] ?>");
-        </script>
-        <div class="box-data column <?php echo categoryConvert($value['category']); ?>">
+        <div id="recipe-<?php echo $value['recipeId'] ?>"
+             class="box-data column <?php echo categoryConvert($value['category']); ?>">
             <a href="recipe.php?recipeId=<?php echo $value['recipeId'] ?>">
                 <div class="crop">
                     <img src="./src/service/recipe/images/<?php echo $value['recipeImg']; ?>">
@@ -52,6 +75,17 @@ if ($fullResult) {
                 <span style="font-size: 13px;" class="data-detail "><?php echo $value['category']; ?></span>
             </a>
         </div>
+        <script>
+            $(document).ready(() => {
+                $('[id]').each(function () {
+                    console.log(this.id)
+                    var ids = $('[id=' + this.id + ']');
+                    if (ids.length > 1 && ids[0] == this) {
+                        $(ids[1]).hide(0);
+                    }
+                });
+            });
+        </script>
         <?php $i++;
     }
 } else if ($fullSimilarResult) {

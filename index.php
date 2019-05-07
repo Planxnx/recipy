@@ -32,8 +32,15 @@ $_SESSION['currentPage'] = $_SERVER['REQUEST_URI'];
         ?>
         <div class="profile-btn">
             <?php
-            echo "คุณ " . $_SESSION["name"];
-            echo " &nbsp&nbsp&nbsp";
+                if ($_SESSION["role"] == 'admin'){?>
+                    <span>
+                        <a style="color: #fefefe;font-size: 17px" href="control_panel.php">คุณ <?php echo$_SESSION["name"] ;?> </a>&nbsp&nbsp&nbsp
+                    </span>
+                <?php
+                }else {
+                    echo "คุณ " . $_SESSION["name"];
+                    echo " &nbsp&nbsp&nbsp";
+                }
             ?>
             <br>
             <a href="./editProfile.php">Edit Profile</a><br>

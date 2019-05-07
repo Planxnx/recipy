@@ -34,8 +34,17 @@ $ingredientTemp = array();
         ?>
         <div class="profile-btn">
             <?php
-            echo "คุณ " . $_SESSION["name"];
-            echo " &nbsp&nbsp&nbsp";
+            if ($_SESSION["role"] == 'admin') {
+                ?>
+                <span>
+                        <a style="color: #fefefe;font-size: 17px"
+                           href="control_panel.php">คุณ <?php echo $_SESSION["name"]; ?> </a>&nbsp&nbsp&nbsp
+                    </span>
+                <?php
+            } else {
+                echo "คุณ " . $_SESSION["name"];
+                echo " &nbsp&nbsp&nbsp";
+            }
             ?>
             <br>
             <a href="./editProfile.php">Edit Profile</a><br>
@@ -95,11 +104,6 @@ $ingredientTemp = array();
                 $updateSql = "UPDATE recipe SET vote_score = " . $scores . " WHERE recipeId = '" . $_GET['recipeId'] . "' ";
                 $query = mysqli_query($objCon, $updateSql);
                 if (isset($_SESSION["uid"])) {
-//                    $sql = "SELECT * FROM recipe_vote WHERE recipeId = '" . $_GET['recipeId'] . "' AND uid = '" . $_SESSION["uid"] . "';";
-//                    $query = mysqli_query($objCon, $sql);
-//                    if (!$result = mysqli_fetch_assoc($query)) {
-//                        $enableVote = true;
-//                    }
                     $enableVote = true;
                 }
                 ?>
@@ -166,6 +170,13 @@ $ingredientTemp = array();
                     }
                     ?>
                 </div>
+<!--
+                <div style="text-align: right; margin-right: 2%">
+                     <span style="margin-left: 2%;cursor: pointer;font-size: 17px;"
+                           onclick="removeRecipe(<?php echo $_GET['recipeId']; ?>)"><i
+                                 class="fa fa-trash-o" aria-hidden="true"></i></span>
+                </div>
+-->
             </div>
             <div id="comment-recipe" class="comment-recipe shadow">
                 <span class="data-header">Comments</span>
@@ -183,7 +194,9 @@ $ingredientTemp = array();
                                 <div class="comment-data-header">
                                     <span><u><?php echo $resultComment['name']; ?></u></span>
                                     <span style="font-size: 12px;"> <?php echo $resultComment['comment_date']; ?></span>
-                                    <span style="margin-left: 2%;cursor: pointer" onclick="removeComment(<?php echo $resultComment['id']; ?>,<?php echo $resultComment['uid']; ?>)"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
+                                    <span style="margin-left: 2%;cursor: pointer"
+                                          onclick="removeComment(<?php echo $resultComment['id']; ?>,<?php echo $resultComment['uid']; ?>)"><i
+                                                class="fa fa-trash-o" aria-hidden="true"></i></span>
                                 </div>
                                 <div class="comment-data-body">
                                     <p>
@@ -321,13 +334,12 @@ $ingredientTemp = array();
             }
         });
     }
-
-    const removeComment = (commentId,uid) => {
+    const removeComment = (commentId, uid) => {
         $.ajax({
             url: "./src/service/recipe/deleteCommentService.php",
             type: "POST",
             data: {
-                uid:uid,
+                uid: uid,
                 commentId: commentId
             },
             success: function (data) {
@@ -336,7 +348,29 @@ $ingredientTemp = array();
                 } else if (data == 102) {
                     alert('Please Sign In to delete comment!')
                 } else if (data == 400) {
-                    alert("Fail to Comment")
+                    alert("Fail to Delete")
+                    console.log("status:400")
+                } else {
+                    $("#list-comment").load(location.href + " #list-comment");
+                    console.log(`message:${data}`)
+                }
+            }
+        });
+    }
+    const removeRecipe = (recipeId) =>{
+        $.ajax({
+            url: "./src/service/recipe/deleteRecipeService.php",
+            type: "POST",
+            data: {
+                recipeId: recipeId,
+            },
+            success: function (data) {
+                if (data == 101) {
+                    alert("You don't own this Recipe!")
+                } else if (data == 102) {
+                    alert('Please Sign In to delete Recipe!')
+                } else if (data == 400) {
+                    alert("Fail to Delete")
                     console.log("status:400")
                 } else {
                     $("#list-comment").load(location.href + " #list-comment");

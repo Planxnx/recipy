@@ -18,7 +18,7 @@ $objQuery = mysqli_query($objCon, $strSQL);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/ico" href="src/img/icon.png"/>
-    <title>Recipy: Vote Ranking</title>
+    <title>Recipy: Control Panel</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./src/css/default.css">
     <link rel="stylesheet" href="./src/css/control_panel.css">

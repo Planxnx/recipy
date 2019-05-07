@@ -1,0 +1,79 @@
+#content {
+    margin: 60px;
+    margin-top: 140px;
+    margin-bottom: 140px;
+}
+
+.form-box {
+    background-color: #F0F0F0;
+    width: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 7%;
+    padding-top: 2%;
+}
+
+.form-header {
+    text-align: center;
+    color: #F39C12;
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 2%
+}
+
+#form1 {
+    color: #707070;
+    line-height: 170%;
+}
+
+#form1 button {
+    background: #EE801E;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+    color: #F7F9F9;
+    padding: 2%;
+    padding-left: 4%;
+    padding-right: 4%;
+    float: right;
+}
+
+#txtname,
+#ddlcategory,
+#tag_name{
+    width: 40%;
+    border: none;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+#txtname:focus,
+#tag_name:focus{
+    width: 80%;
+}
+
+#txtdescription,
+#txthowTo,
+#txtingredient {
+    width: 100%;
+    resize: none;
+    border: none;
+}
+
+#ingredientInput{
+    border: none;
+}
+
+
+#form1 #addField {
+    background: #EE801E;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    color: #F7F9F9;
+    padding: 2%;
+    padding-left: 4%;
+    padding-right: 4%;
+    float: left;
+}

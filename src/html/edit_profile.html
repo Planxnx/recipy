@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/ico" href="src/img/icon.png" />
+    <title>Recipy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./src/css/default.css">
+    <link rel="stylesheet" href="./src/css/edit_profile.css">
+
+</head>
+
+<body>
+    <div id="main">
+        <div id="edit">
+            <div class="detail-column">
+                <div class="detail-header">
+                    <span>Your Profile</span>
+                </div>
+                <div class="detail-body">
+                    <span>Name : </span> <span style="float:right;">Thanee Charattrakool</span> <br>
+                    <span>Email :</span> <span style="float:right;">60010465@kmitl.ac.th</span> <br>
+                </div>
+                <div class="detail-footer">
+                    <img src="./src//img/logo.png" alt=""> <br>
+                </div>
+            </div>
+            <div class="form-column">
+                <div class="form-header">
+                    <span>Reset Your Password</span>
+                </div>
+                <form name="form1" id="userData">
+                    <div class="form-data">
+                        <label for="txtPassword">Your Password</label><br>
+                        <input required name="txtPassword" type="password" id="txtPassword"><br>
+                        <label for="txtNewPassword">New Password</label><br>
+                        <input required name="txtNewPassword" type="password" pattern="(?=.*[A-Za-z0-9]).{4,16}"
+                            id="txtNewPassword" onChange="checkPasswordMatch();"><br>
+                        <label for="txtConPassword">Repeat Password</label><br>
+                        <input required name="txtConPassword" type="password" pattern="(?=.*[A-Za-z0-9]).{4,16}"
+                            id="txtConPassword" onChange="checkPasswordMatch();"><br>
+                        <input type="submit" name="btnConfirm" id="btnConfirm" value="Confirm">
+                        <div class="registrationFormAlert" id="divCheckPasswordMatch">
+                        </div>
+                    </div>
+                </form>
+                <div class="back-button">
+                    <a href="">Back</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="./src/js/sign_in.js"></script>
+</body>
+
+</html>

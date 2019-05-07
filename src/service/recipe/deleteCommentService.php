@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo 102;
         exit();
     }
-    if ($_SESSION["uid"] == $_POST["uid"] || $_SESSION["name"] == 'admin') {
+    if ($_SESSION["uid"] == $_POST["uid"] || $_SESSION["role"] == 'admin') {
         $sql = "DELETE FROM recipe_comment WHERE id = ". $_POST['commentId'];
         if ($objQuery = mysqli_query($objCon, $sql)) {
             echo 200;

@@ -24,7 +24,6 @@ if (!isset($_SESSION["uid"])) {
     <script src="https://cdn.jsdelivr.net/npm/mobile-detect@1.4.3/mobile-detect.min.js"></script>
     <script src="./src/js/display_check.js"></script>
 </head>
-
 <body>
 <div class="topNav shadow">
     <div class="homeButton">

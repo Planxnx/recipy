@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/ico" href="src/img/icon.png" />
+    <link rel="icon" type="image/ico" href="src/img/icon.png"/>
     <title>Recipy: Sign in</title>
     <script src="https://cdn.jsdelivr.net/npm/mobile-detect@1.4.3/mobile-detect.min.js"></script>
     <script src="./src/js/display_check.js"></script>
@@ -55,7 +55,8 @@
             <form name="form1" id="userData">
                 <div class="form-data">
                     <label for="txtName">Name</label><br>
-                    <input required name="txtName" type="text" id="txtName" size="35"><br>
+                    <input required name="txtName" pattern="([A-Z]*)(?=.*[a-z])([0-9]*).{4,12}" type="text" id="txtName"
+                           size="35"><br>
                     <label for="txtUsername">Username</label><br>
                     <input required name="txtUsername" pattern="([A-Z]*)(?=.*[a-z])([0-9]*).{4,12}" type="text"
                            id="txtUsername" size="20">

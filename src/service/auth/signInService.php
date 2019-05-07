@@ -12,6 +12,7 @@ if (!$objResult) {
 } else {
     $_SESSION["uid"] = $objResult["uid"];
     $_SESSION["name"] = $objResult["name"];
+    $_SESSION["role"] = $objResult["role"];
     session_write_close();
 
     if (isset($_SESSION['currentPage'])) {

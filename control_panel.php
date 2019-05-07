@@ -1,7 +1,7 @@
 <?php
 session_start();
 include 'config.php';
-if ($_SESSION["name"] != 'admin') {
+if ($_SESSION["role"] != 'admin') {
     $URL = "index.php";
     echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
     echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';

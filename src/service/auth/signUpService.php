@@ -25,6 +25,7 @@ if ($usernameResult) {
     $objQuery = mysqli_query($objCon, $strSQL);
     $objResult = mysqli_fetch_array($objQuery);
     $_SESSION["name"] = $objResult["name"];
+    $_SESSION["role"] = $objResult["role"];
 
     session_write_close();
     if (isset($_SESSION['currentPage'])) {

@@ -323,7 +323,6 @@ $ingredientTemp = array();
     }
 
     const removeComment = (commentId,uid) => {
-        console.log("removeCOmment");
         $.ajax({
             url: "./src/service/recipe/deleteCommentService.php",
             type: "POST",

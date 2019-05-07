@@ -120,8 +120,8 @@ if (!isset($_SESSION["uid"])) {
             <div class="input_fields_wrap">
                 <input required type="text" id="ingredientInput" name="txtingredient[]" placeholder="Name Ex.' อกไก่ ' ">
                 <input required type="text" id="ingredientInput" name="txtamount[]" placeholder="Amount Ex.' 2.1 กิโลกรัม '"><br>
-                <input required type="text" id="ingredientInput" name="txtingredient[]" placeholder="Name Ex.' น้ำตาลทราย ' ">
-                <input required type="text" id="ingredientInput" name="txtamount[]" placeholder="Amount Ex.' 2 ช้อนชา ' ">
+                <input type="text" id="ingredientInput" name="txtingredient[]" placeholder="Name Ex.' น้ำตาลทราย ' ">
+                <input type="text" id="ingredientInput" name="txtamount[]" placeholder="Amount Ex.' 2 ช้อนชา ' ">
             </div>
             <button type="button" id="addField" class="addField shadow" style="float: left;font-size: 13px;padding:0;margin-top: 1%;">  add more Ingredient 
             </button>

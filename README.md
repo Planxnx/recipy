@@ -3,4 +3,4 @@
 
 made from pure php 
 
-**you can see in this link [Recipy Pages](https://webserv.kmitl.ac.th/ite60010465/develop/recipy/)**(in progress)
+**you can see in this link [Recipy Pages](https://webserv.kmitl.ac.th/ite60010465/develop/recipy/)**
